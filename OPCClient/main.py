@@ -16,6 +16,11 @@ class SubHandler:
 
     def datachange_notification(self, node, val, data):
         print("New data change event", node, val)
+        print("--------------")
+        print(node)
+        print(val)
+        print(data)
+        print("--------------")
 
     def event_notification(self, event):
         print("New event", event)

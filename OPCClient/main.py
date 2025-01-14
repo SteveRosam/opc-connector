@@ -30,7 +30,7 @@ class SubHandler:
         print("--------------")
         print(node.nodeid.NamespaceIndex)
         print(node.nodeid.Identifier)
-
+        id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
         print("--------------")
         print(val)
         print("--------------")
@@ -43,7 +43,7 @@ class SubHandler:
             # publish the data to the topic
             producer.produce(
                 topic=topic.name,
-                key=node,
+                key=id,
                 value=json_data,
             )
 

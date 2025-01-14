@@ -1,11 +1,6 @@
 name: OPCServer
 language: python
 variables:
-  - name: input
-    inputType: InputTopic
-    description: Name of the input topic to listen to.
-    defaultValue: first_topic
-    required: true
   - name: USERNAME
     inputType: Secret
     description: Websocket username

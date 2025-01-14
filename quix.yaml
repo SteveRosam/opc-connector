@@ -31,7 +31,12 @@ deployments:
       cpu: 200
       memory: 500
       replicas: 1
-    variables: []
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: ''
+        required: false
+        value: opc_data
 
 # This section describes the Topics of the data pipeline
 topics:

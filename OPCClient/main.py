@@ -1,13 +1,19 @@
 import asyncio
 import logging
+import os
+import json
+
 
 from asyncua import Client
 from quixstreams import Application
 
 _logger = logging.getLogger(__name__)
 
-app = Application()
+app = Application(consumer_group="data_source", auto_create_topics=True)  # create an Application
 
+# define the topic using the "output" environment variable
+topic_name = os.environ["output"]
+topic = app.topic(topic_name)
 
 
 class SubHandler:
@@ -29,7 +35,15 @@ class SubHandler:
         print(data)
         print("--------------")
 
+        with app.get_producer() as producer:
+            json_data = json.dumps(val)  # convert the row to JSON
 
+            # publish the data to the topic
+            producer.produce(
+                topic=topic.name,
+                key=node,
+                value=json_data,
+            )
 
     def event_notification(self, event):
         print("New event", event)

@@ -1,11 +1,6 @@
 name: OPCServer
 language: python
-variables:
-  - name: PASSWORD
-    inputType: Secret
-    description: Websocket password
-    defaultValue: websocket_password
-    required: true
+variables: []
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py

@@ -28,7 +28,7 @@ class SubHandler:
         # print("New data change event", node, val)
         print("New data change event")
         print("--------------")
-        print(node.nodeid)
+        print(node.nodeid.identifier)
 
         print("--------------")
         print(val)

@@ -28,8 +28,8 @@ class SubHandler:
         # print("New data change event", node, val)
         print("New data change event")
         print("--------------")
-        print(node.ns)
-        print(node.i)
+        print(node['ns'])
+
         print("--------------")
         print(val)
         print("--------------")

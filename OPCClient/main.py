@@ -15,10 +15,13 @@ class SubHandler:
     """
 
     def datachange_notification(self, node, val, data):
-        print("New data change event", node, val)
+        # print("New data change event", node, val)
+        print("New data change event")
         print("--------------")
         print(node)
+        print("--------------")
         print(val)
+        print("--------------")
         print(data)
         print("--------------")
 

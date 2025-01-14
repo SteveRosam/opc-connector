@@ -2,6 +2,7 @@ import asyncio
 import logging
 
 from asyncua import Client
+from quixstreams import Application
 
 _logger = logging.getLogger(__name__)
 
@@ -24,6 +25,8 @@ class SubHandler:
         print("--------------")
         print(data)
         print("--------------")
+
+
 
     def event_notification(self, event):
         print("New event", event)

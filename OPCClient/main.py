@@ -22,7 +22,7 @@ class SubHandler:
 
 
 async def main():
-    url = "opc.tcp://intopcserver:4840/freeopcua/server/"
+    url = "https://intopcserver:4840/freeopcua/server/"
     
     async with Client(url=url) as client:
         _logger.info("Root node is: %r", client.nodes.root)

@@ -1,11 +1,6 @@
 name: OPCServer
 language: python
 variables:
-  - name: USERNAME
-    inputType: Secret
-    description: Websocket username
-    defaultValue: websocket_username
-    required: true
   - name: PASSWORD
     inputType: Secret
     description: Websocket password

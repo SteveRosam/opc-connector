@@ -1,6 +1,11 @@
 name: OPCClient
 language: python
-variables: []
+variables:
+  - name: output
+    inputType: OutputTopic
+    description: ''
+    defaultValue: opc_data
+    required: false
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py

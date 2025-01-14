@@ -6,6 +6,9 @@ from quixstreams import Application
 
 _logger = logging.getLogger(__name__)
 
+app = Application()
+
+
 
 class SubHandler:
     """

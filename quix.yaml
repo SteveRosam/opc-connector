@@ -18,10 +18,10 @@ deployments:
       enabled: true
       urlPrefix: opcserver
     network:
-      serviceName: opcserver
+      serviceName: intopcserver
       ports:
-        - port: 80
-          targetPort: 80
+        - port: 4840
+          targetPort: 4840
     variables: []
   - name: OPCClient
     application: OPCClient

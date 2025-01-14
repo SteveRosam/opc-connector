@@ -1,2 +1,2 @@
 asyncua
-quixstreams
+quixstreams==3.2.1

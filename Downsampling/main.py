@@ -14,8 +14,7 @@ sdf = app.dataframe(input_topic)
 
 sdf.print()
 
-
-# sdf = sdf.apply(lambda row: row["payload"], expand=True)
+sdf = sdf.apply(lambda row: row["value"], expand=True)
 
 # def expand_values_to_columns(row: dict):
 #     new_row = {}

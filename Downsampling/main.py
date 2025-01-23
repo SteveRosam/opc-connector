@@ -12,29 +12,32 @@ output_topic = app.topic(os.environ["output"])
 
 sdf = app.dataframe(input_topic)
 
-sdf = sdf.apply(lambda row: row["payload"], expand=True)
+sdf.print()
 
-def expand_values_to_columns(row: dict):
-    new_row = {}
-    for key in row["values"]:
-        new_row[row["name"] + "-" + key] = row["values"][key]
 
-    new_row["timestamp"] = row["time"]
+# sdf = sdf.apply(lambda row: row["payload"], expand=True)
+
+# def expand_values_to_columns(row: dict):
+#     new_row = {}
+#     for key in row["values"]:
+#         new_row[row["name"] + "-" + key] = row["values"][key]
+
+#     new_row["timestamp"] = row["time"]
     
-    return new_row
+#     return new_row
 
-sdf = sdf.apply(expand_values_to_columns)
+# sdf = sdf.apply(expand_values_to_columns)
 
-sdf = sdf.hopping_window(5000, 250).reduce(lambda state, row: { **state, **row}, lambda row: row).final()
+# sdf = sdf.hopping_window(5000, 250).reduce(lambda state, row: { **state, **row}, lambda row: row).final()
 
-sdf = sdf.apply(lambda row:{
-    "timestamp": row["start"],
-    **row["value"]
-})
+# sdf = sdf.apply(lambda row:{
+#     "timestamp": row["start"],
+#     **row["value"]
+# })
 
-sdf = sdf.update(lambda row: print(row))
+# sdf = sdf.update(lambda row: print(row))
 
-sdf = sdf.to_topic(output_topic)
+# sdf = sdf.to_topic(output_topic)
 
 if __name__ == "__main__":
     app.run(sdf)

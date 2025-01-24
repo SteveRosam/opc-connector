@@ -6,25 +6,6 @@ metadata:
 
 # This section describes the Deployments of the data pipeline
 deployments:
-  - name: Downsampling
-    application: Downsampling
-    version: latest
-    deploymentType: Service
-    resources:
-      cpu: 200
-      memory: 500
-      replicas: 1
-    variables:
-      - name: input
-        inputType: InputTopic
-        description: Name of the input topic to listen to.
-        required: false
-        value: opc_data
-      - name: output
-        inputType: OutputTopic
-        description: Name of the output topic to write to.
-        required: false
-        value: downsampled
   - name: Websocket Destination
     application: Websocket Destination
     version: latest
@@ -95,6 +76,25 @@ deployments:
         description: ''
         required: false
         value: opc_data
+  - name: My First ML Model
+    application: Downsampling
+    version: latest
+    deploymentType: Service
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: Name of the input topic to listen to.
+        required: false
+        value: opc_data
+      - name: output
+        inputType: OutputTopic
+        description: Name of the output topic to write to.
+        required: false
+        value: downsampled
 
 # This section describes the Topics of the data pipeline
 topics:

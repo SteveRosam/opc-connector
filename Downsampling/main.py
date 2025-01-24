@@ -29,7 +29,7 @@ sdf = sdf.apply(lambda row:{
 sdf = sdf.update(lambda row: print(row))
 sdf.print()
 
-# sdf = sdf.to_topic(output_topic)
+sdf = sdf.to_topic(output_topic)
 
 if __name__ == "__main__":
     app.run(sdf)

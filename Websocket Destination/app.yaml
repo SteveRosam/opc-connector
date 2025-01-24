@@ -1,0 +1,22 @@
+name: Websocket Destination
+language: python
+variables:
+  - name: input
+    inputType: InputTopic
+    description: Name of the input topic to listen to.
+    defaultValue: downsampled
+    required: true
+  - name: USERNAME
+    inputType: Secret
+    description: Websocket username
+    defaultValue: websocket_uername
+    required: true
+  - name: PASSWORD
+    inputType: Secret
+    description: Websocket password
+    defaultValue: websocket_password
+    required: true
+dockerfile: dockerfile
+runEntryPoint: main.py
+defaultFile: main.py
+libraryItemId: websocket-destination

@@ -56,6 +56,33 @@ deployments:
         description: Name of the output topic to write to.
         required: false
         value: transform
+  - name: Websocket Destination
+    application: Websocket Destination
+    version: latest
+    deploymentType: Service
+    resources:
+      cpu: 200
+      memory: 200
+      replicas: 1
+    publicAccess:
+      enabled: true
+      urlPrefix: websocket
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: Name of the input topic to listen to.
+        required: true
+        value: downsampled
+      - name: USERNAME
+        inputType: Secret
+        description: Websocket username
+        required: true
+        secretKey: websocket_uername
+      - name: PASSWORD
+        inputType: Secret
+        description: Websocket password
+        required: true
+        secretKey: websocket_password
 
 # This section describes the Topics of the data pipeline
 topics:

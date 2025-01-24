@@ -6,20 +6,6 @@ metadata:
 
 # This section describes the Deployments of the data pipeline
 deployments:
-  - name: OPCClient
-    application: OPCClient
-    version: latest
-    deploymentType: Service
-    resources:
-      cpu: 200
-      memory: 500
-      replicas: 1
-    variables:
-      - name: output
-        inputType: OutputTopic
-        description: ''
-        required: false
-        value: opc_data
   - name: Downsampling
     application: Downsampling
     version: latest
@@ -95,6 +81,20 @@ deployments:
         - port: 4840
           targetPort: 4840
     variables: []
+  - name: OPC UA Client
+    application: OPCClient
+    version: latest
+    deploymentType: Service
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: ''
+        required: false
+        value: opc_data
 
 # This section describes the Topics of the data pipeline
 topics:

@@ -23,7 +23,7 @@ def start():
 st.title("WebSocket Live Data Viewer")
 
 # Authentication and options
-if "is_connected" not in st.session_state:
+if "is_connected" not in st.session_state or st.session_state == False:
     st.text_input("Websocket root URL", type="default", key="wss_root_url", value="ws://localhost")
     st.text_input("Websocket port", type="default", key="wss_port", value="8080")
     st.text_input("Websocket Username", type="default", key="wss_username", value="")

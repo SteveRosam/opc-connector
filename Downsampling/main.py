@@ -28,14 +28,15 @@ sdf.print()
 
 sdf.apply(lambda row: print(row['value']))
 
-# sdf = sdf.hopping_window(5000, 250).reduce(lambda state, row: { **state, **row}, lambda row: row).final()
+sdf = sdf.hopping_window(2000, 250).reduce(lambda state, row: { **state, **row}, lambda row: row).final()
 
-# sdf = sdf.apply(lambda row:{
-#     "timestamp": row["start"],
-#     **row["value"]
-# })
+sdf = sdf.apply(lambda row:{
+    "timestamp": row["start"],
+    **row["value"]
+})
 
-# sdf = sdf.update(lambda row: print(row))
+sdf = sdf.update(lambda row: print(row))
+sdf.print()
 
 # sdf = sdf.to_topic(output_topic)
 

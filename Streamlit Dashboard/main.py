@@ -66,7 +66,7 @@ else:
         auth_token = base64.b64encode(f"{st.session_state.wss_username}:{st.session_state.wss_password}".encode()).decode()
         headers = [("Authorization", f"Basic {auth_token}")]
 
-        url = f"ws://{st.session_state.wss_root_url}:{st.session_state.wss_port}/{st.session_state.stream_key}"
+        url = f"{st.session_state.wss_root_url}:{st.session_state.wss_port}/{st.session_state.stream_key}"
         status_placeholder.write(f"Connecting to WebSocket {url}...")
 
         # Connect to WebSocket

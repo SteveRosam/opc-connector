@@ -12,7 +12,7 @@ output_topic = app.topic(os.environ["output"])
 
 sdf = app.dataframe(input_topic)
 
-sdf.print()
+# sdf.print()
 
 # sdf = sdf.apply(lambda row: row, expand=True)
 
@@ -24,9 +24,9 @@ def expand_values_to_columns(value: float):
     return new_row
 
 sdf = sdf.apply(expand_values_to_columns)
-sdf.print()
+# sdf.print()
 
-sdf.apply(lambda row: print(row['value']))
+# sdf.apply(lambda row: print(row['value']))
 
 sdf = sdf.hopping_window(2000, 250).reduce(lambda state, row: { **state, **row}, lambda row: row).final()
 

@@ -12,21 +12,12 @@ output_topic = app.topic(os.environ["output"])
 
 sdf = app.dataframe(input_topic)
 
-# sdf.print()
-
-# sdf = sdf.apply(lambda row: row, expand=True)
-
 def expand_values_to_columns(value: float):
     new_row = {}
-    
     new_row["value"] = value
-    
     return new_row
 
 sdf = sdf.apply(expand_values_to_columns)
-# sdf.print()
-
-# sdf.apply(lambda row: print(row['value']))
 
 sdf = sdf.hopping_window(5000, 250).reduce(lambda state, row: { **state, **row}, lambda row: row).final()
 
@@ -38,7 +29,7 @@ sdf = sdf.apply(lambda row:{
 sdf = sdf.update(lambda row: print(row))
 sdf.print()
 
-# sdf = sdf.to_topic(output_topic)
+sdf = sdf.to_topic(output_topic)
 
 if __name__ == "__main__":
     app.run(sdf)

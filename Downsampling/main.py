@@ -28,7 +28,7 @@ sdf = sdf.apply(expand_values_to_columns)
 
 # sdf.apply(lambda row: print(row['value']))
 
-sdf = sdf.hopping_window(2000, 250).reduce(lambda state, row: { **state, **row}, lambda row: row).final()
+sdf = sdf.hopping_window(5000, 250).reduce(lambda state, row: { **state, **row}, lambda row: row).final()
 
 sdf = sdf.apply(lambda row:{
     "timestamp": row["start"],

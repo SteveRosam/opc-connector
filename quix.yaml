@@ -83,6 +83,18 @@ deployments:
         description: Websocket password
         required: true
         secretKey: websocket_password
+  - name: Streamlit Dashboard
+    application: Streamlit Dashboard
+    version: latest
+    deploymentType: Service
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    publicAccess:
+      enabled: true
+      urlPrefix: streamlitdashboard
+    variables: []
 
 # This section describes the Topics of the data pipeline
 topics:

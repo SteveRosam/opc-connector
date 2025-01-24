@@ -16,16 +16,15 @@ sdf.print()
 
 # sdf = sdf.apply(lambda row: row, expand=True)
 
-# def expand_values_to_columns(row: dict):
-#     new_row = {}
-#     for key in row["values"]:
-#         new_row[row["name"] + "-" + key] = row["values"][key]
-
-#     new_row["timestamp"] = row["time"]
+def expand_values_to_columns(value: float):
+    new_row = {}
     
-#     return new_row
+    new_row["value"] = value
+    
+    return new_row
 
-# sdf = sdf.apply(expand_values_to_columns)
+sdf = sdf.apply(expand_values_to_columns)
+sdf.print()
 
 # sdf = sdf.hopping_window(5000, 250).reduce(lambda state, row: { **state, **row}, lambda row: row).final()
 

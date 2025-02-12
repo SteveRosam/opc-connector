@@ -88,25 +88,24 @@ async def main():
         for obj in objects:
             # Get the object's browse name
             browse_name = await obj.read_browse_name()
-            print(f"ObjectBrowseName: {browse_name}")
+            # print(f"ObjectBrowseName: {browse_name}")
 
             if browse_name.Name in ["Device0001", "3D_PRINTER_1"]:
-                print("fooo")
+                # print("fooo")
                 # Optionally, get and print the children of each object
                 children = await obj.get_children()
                 
                 for child in children:
                     child_browse_name = await child.read_browse_name()
-                    print("++++++++++")
-                    print(f"CHILDBrowseName: {child_browse_name}")
+                    # print("++++++++++")
+                    # print(f"CHILDBrowseName: {child_browse_name}")
 
                     try:
                         
                         param_string = f"/Objects/2:{browse_name.Name}/2:{child_browse_name.Name}"
-                        print("---------")
-                        print(param_string)
+                        # print("---------")
+                        # print(param_string)
                         myvar = await client.nodes.root.get_child(param_string)
-                        print("*********")
                         print(myvar)
                         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
                     except Exception as e:

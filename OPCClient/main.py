@@ -9,7 +9,10 @@ from quixstreams import Application
 
 _logger = logging.getLogger(__name__)
 
-app = Application(consumer_group="data_source", auto_create_topics=True)  # create an Application
+# Create an Application
+app = Application(
+        consumer_group="data_source", 
+        auto_create_topics=True)
 
 # define the topic using the "output" environment variable
 topic_name = os.environ["output"]

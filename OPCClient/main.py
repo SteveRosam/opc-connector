@@ -55,7 +55,7 @@ class SubHandler:
 
 
 async def main():
-    url = "https://intopcserver:4840/freeopcua/server/"
+    url = os.environ["OPC_SERVER_URL"]
     
     async with Client(url=url) as client:
         _logger.info("Root node is: %r", client.nodes.root)

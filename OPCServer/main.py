@@ -72,20 +72,21 @@ async def main():
     mydevice_var = await mydevice.get_child(
         [f"{idx}:controller", f"{idx}:state"]
     )  # get proxy to our device state variable
+    
     # create directly some objects and variables
-    myobj = await server.nodes.objects.add_object(idx, "MyObject")
-    myvar = await myobj.add_variable(idx, "MyVariable", 6.7)
-    await myvar.set_writable()  # Set MyVariable to be writable by clients
+    my_object = await server.nodes.objects.add_object(idx, "MyObject")
+    my_variable = await my_object.add_variable(idx, "MyVariable", 6.7)
+    await my_variable.set_writable()  # Set MyVariable to be writable by clients
     
     
-    mymethod = await myobj.add_method(idx, "mymethod", func, [ua.VariantType.Int64], [ua.VariantType.Boolean])
-    multiply_node = await myobj.add_method(
-        idx,
-        "multiply",
-        multiply,
-        [ua.VariantType.Int64, ua.VariantType.Int64],
-        [ua.VariantType.Int64],
-    )
+    # mymethod = await my_object.add_method(idx, "mymethod", func, [ua.VariantType.Int64], [ua.VariantType.Boolean])
+    # multiply_node = await my_object.add_method(
+    #     idx,
+    #     "multiply",
+    #     multiply,
+    #     [ua.VariantType.Int64, ua.VariantType.Int64],
+    #     [ua.VariantType.Int64],
+    # )
 
     # import some nodes from xml
     await server.import_xml("custom_nodes.xml")
@@ -101,11 +102,11 @@ async def main():
         print("Available loggers are: ", logging.Logger.manager.loggerDict.keys())
         await mydevice_var.write_value("Running")
         await myevgen.trigger(message="This is BaseEvent")
-        await server.write_attribute_value(myvar.nodeid, ua.DataValue(0.9))
+        await server.write_attribute_value(my_variable.nodeid, ua.DataValue(0.9))
 
         while True:
             await asyncio.sleep(0.1)
-            await server.write_attribute_value(myvar.nodeid, ua.DataValue(sin(time.time())))
+            await server.write_attribute_value(my_variable.nodeid, ua.DataValue(sin(time.time())))
 
 
 if __name__ == "__main__":

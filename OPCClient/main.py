@@ -23,14 +23,9 @@ topic_name = os.environ["output"]
 topic = app.topic(topic_name)
 
 def handle_sigterm(signum, frame):
-    global run, sub, handle
-    
+    global run
     print("\nReceived SIGTERM. Exiting gracefully.")
     run = False
-    # unsubscribe the handler
-    await sub.unsubscribe(handle)
-    await sub.delete()
-    exit(0)
 
 
 # Register the signal handler
@@ -104,6 +99,9 @@ async def main():
         while run:
             await asyncio.sleep(1)
 
+        # unsubscribe the handler
+        await sub.unsubscribe(handle)
+        await sub.delete()
 
 if __name__ == "__main__":
     try:

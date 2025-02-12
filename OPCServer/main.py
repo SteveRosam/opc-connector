@@ -81,15 +81,8 @@ async def main():
     myobj = await server.nodes.objects.add_object(idx, "MyObject")
     myvar = await myobj.add_variable(idx, "MyVariable", 6.7)
     await myvar.set_writable()  # Set MyVariable to be writable by clients
-    mystringvar = await myobj.add_variable(idx, "MyStringVariable", "Really nice string")
-    await mystringvar.set_writable()  # Set MyVariable to be writable by clients
-    mydtvar = await myobj.add_variable(idx, "MyDateTimeVar", datetime.utcnow())
-    await mydtvar.set_writable()  # Set MyVariable to be writable by clients
-    myarrayvar = await myobj.add_variable(idx, "myarrayvar", [6.7, 7.9])
-    myuintvar = await myobj.add_variable(idx, "myuintvar", ua.UInt16(4))
-    await myobj.add_variable(idx, "myStronglytTypedVariable", ua.Variant([], ua.VariantType.UInt32))
-    await myarrayvar.set_writable(True)
-    myprop = await myobj.add_property(idx, "myproperty", "I am a property")
+    
+    
     mymethod = await myobj.add_method(idx, "mymethod", func, [ua.VariantType.Int64], [ua.VariantType.Boolean])
     multiply_node = await myobj.add_method(
         idx,
@@ -111,21 +104,8 @@ async def main():
     # starting!
     async with server:
         print("Available loggers are: ", logging.Logger.manager.loggerDict.keys())
-        # enable following if you want to subscribe to nodes on server side
-        # handler = SubHandler()
-        # sub = await server.create_subscription(500, handler)
-        # handle = await sub.subscribe_data_change(myvar)
-        # trigger event, all subscribed clients wil receive it
-        var = await myarrayvar.read_value()  # return a ref to value in db server side! not a copy!
-        var = copy.copy(
-            var
-        )  # WARNING: we need to copy before writting again otherwise no data change event will be generated
-        var.append(9.3)
-        await myarrayvar.write_value(var)
         await mydevice_var.write_value("Running")
         await myevgen.trigger(message="This is BaseEvent")
-        # write_attribute_value is a server side method which is faster than using write_value
-        # but than methods has less checks
         await server.write_attribute_value(myvar.nodeid, ua.DataValue(0.9))
 
         while True:
@@ -135,14 +115,4 @@ async def main():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    # optional: setup logging
-    # logger = logging.getLogger("asyncua.address_space")
-    # logger.setLevel(logging.DEBUG)
-    # logger = logging.getLogger("asyncua.internal_server")
-    # logger.setLevel(logging.DEBUG)
-    # logger = logging.getLogger("asyncua.binary_server_asyncio")
-    # logger.setLevel(logging.DEBUG)
-    # logger = logging.getLogger("asyncua.uaprocessor")
-    # logger.setLevel(logging.DEBUG)
-
     asyncio.run(main())

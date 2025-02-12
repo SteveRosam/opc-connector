@@ -61,9 +61,9 @@ async def main():
         # Node objects have methods to read and write node attributes as well as browse or populate address space
         _logger.info("Children of root are: %r", await client.nodes.root.get_children())
 
-        uri = "http://examples.freeopcua.github.io"
-        idx = await client.get_namespace_index(uri)
-        _logger.info("index of our namespace is %s", idx)
+        # uri = "http://examples.freeopcua.github.io"
+        # idx = await client.get_namespace_index(uri)
+        # _logger.info("index of our namespace is %s", idx)
 
         # get a specific node knowing its node id
         # var = client.get_node(ua.NodeId(1002, 2))

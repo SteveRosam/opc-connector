@@ -71,7 +71,8 @@ async def main():
     global run
 
     url = os.environ["OPC_SERVER_URL"]
-    
+    tracked_values = []
+
     async with Client(url=url) as client:
         # _logger.info("Root node is: %r", client.nodes.root)
         # _logger.info("Objects node is: %r", client.nodes.objects)
@@ -105,7 +106,10 @@ async def main():
                         param_string = f"/Objects/2:{browse_name.Name}/2:{child_browse_name.Name}"
                         # print("---------")
                         # print(param_string)
-                        myvar = await client.nodes.root.get_child(param_string)
+
+                        if param_string not in tracked_values:
+                            myvar = await client.nodes.root.get_child(param_string)
+                            tracked_values[param_string] = myvar
                         print(myvar)
                         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
                     except Exception as e:
@@ -118,13 +122,20 @@ async def main():
         # _logger.info("myvar is: %r", myvar)
 
         # subscribing to a variable node
-        handler = SubHandler()
-        sub = await client.create_subscription(10, handler)
-        handle = await sub.subscribe_data_change(myvar)
+        subscriptions = []
+        handles = []
+        for val in tracked_values:
+
+            handler = SubHandler()
+            sub = await client.create_subscription(10, handler)
+        
+            # we can also subscribe to events from server
+            await sub.subscribe_events()
+            subscriptions[val] = sub
+            handles[val] = await sub.subscribe_data_change(myvar)
+        
         await asyncio.sleep(0.1)
 
-        # we can also subscribe to events from server
-        await sub.subscribe_events()
         
         # # calling a method on server
         # res = await obj.call_method("2:multiply", 3, "klk")
@@ -133,8 +144,8 @@ async def main():
             await asyncio.sleep(1)
 
         # unsubscribe the handler
-        await sub.unsubscribe(handle)
-        await sub.delete()
+        # await sub.unsubscribe(handle)
+        # await sub.delete()
 
 if __name__ == "__main__":
     try:

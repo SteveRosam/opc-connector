@@ -96,7 +96,7 @@ async def main():
                 child_browse_name = await child.read_browse_name()
                 print("++++++++++")
                 print(child_browse_name)
-                param_string = f"/Objects/2:{browse_name}/2:{child_browse_name}"
+                param_string = f"/Objects/2:Server/2:ServerArray"
                 print("---------")
                 print(param_string)
                 myvar = await client.nodes.root.get_child(param_string)

@@ -87,13 +87,13 @@ async def main():
     )  # get proxy to our device state variable
     
     # create directly some objects and variables
-    my_object = await server.nodes.objects.add_object(idx, "3D_PRINTER_1")
-    my_variable = await my_object.add_variable(idx, "THERMO_PROBE_1", 99.8)
-    my_variable_2 = await my_object.add_variable(idx, "THERMO_PROBE_2", 97.6)
+    printer = await server.nodes.objects.add_object(idx, "3D_PRINTER_1")
+    probe1 = await printer.add_variable(idx, "THERMO_PROBE_1", 99.8)
+    probe2 = await printer.add_variable(idx, "THERMO_PROBE_2", 0.1)
     
     # Set to be writable by clients
-    await my_variable.set_writable()
-    await my_variable_2.set_writable()
+    await probe1.set_writable()
+    await probe2.set_writable()
     
     
     # mymethod = await my_object.add_method(idx, "mymethod", func, [ua.VariantType.Int64], [ua.VariantType.Boolean])
@@ -123,13 +123,14 @@ async def main():
         scaled_value = scale_sin_to_range(MIN_VALUE, MAX_VALUE)
         datavalue_1 = ua.DataValue(scaled_value)
 
-        await server.write_attribute_value(my_variable.nodeid, ua.DataValue(99.8))
-        await server.write_attribute_value(my_variable_2.nodeid, ua.DataValue(97.6))
+        # Send an initial value / this could be the current value or a default.
+        await server.write_attribute_value(probe1.nodeid, ua.DataValue(99.8))
+        await server.write_attribute_value(probe2.nodeid, ua.DataValue(0.9))
 
         while True:
             await asyncio.sleep(0.1)
-            await server.write_attribute_value(my_variable.nodeid, ua.DataValue(datavalue_1))
-            await server.write_attribute_value(my_variable_2.nodeid, ua.DataValue(sin(time.time())))
+            await server.write_attribute_value(probe1.nodeid, ua.DataValue(datavalue_1))
+            await server.write_attribute_value(probe2.nodeid, ua.DataValue(sin(time.time())))
 
 
 if __name__ == "__main__":

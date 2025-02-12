@@ -102,7 +102,7 @@ async def main():
 
                     try:
                         
-                        param_string = f"/Objects/2:{browse_name.Name}/2:ServerArray"
+                        param_string = f"/Objects/2:{browse_name.Name}/2:child_browse_name.Name"
                         print("---------")
                         print(param_string)
                         # myvar = await client.nodes.root.get_child(param_string)

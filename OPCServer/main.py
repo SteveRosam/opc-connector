@@ -74,8 +74,9 @@ async def main():
     )  # get proxy to our device state variable
     
     # create directly some objects and variables
-    my_object = await server.nodes.objects.add_object(idx, "MyObject")
-    my_variable = await my_object.add_variable(idx, "MyVariable", 6.7)
+    my_object = await server.nodes.objects.add_object(idx, "3D_PRINTER_1")
+    my_variable = await my_object.add_variable(idx, "THERMO_PROBE_1", 6.7)
+    my_variable_2 = await my_object.add_variable(idx, "THERMO_PROBE_2", 6.7)
     await my_variable.set_writable()  # Set MyVariable to be writable by clients
     
     

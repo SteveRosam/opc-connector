@@ -73,11 +73,11 @@ async def main():
     url = os.environ["OPC_SERVER_URL"]
     
     async with Client(url=url) as client:
-        _logger.info("Root node is: %r", client.nodes.root)
-        _logger.info("Objects node is: %r", client.nodes.objects)
+        # _logger.info("Root node is: %r", client.nodes.root)
+        # _logger.info("Objects node is: %r", client.nodes.objects)
 
         # Node objects have methods to read and write node attributes as well as browse or populate address space
-        _logger.info("Children of root are: %r", await client.nodes.root.get_children())
+        # _logger.info("Children of root are: %r", await client.nodes.root.get_children())
 
         # Get the Objects node
         objects_node = client.nodes.objects

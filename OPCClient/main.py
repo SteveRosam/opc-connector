@@ -23,7 +23,9 @@ topic_name = os.environ["output"]
 topic = app.topic(topic_name)
 
 def handle_sigterm(signum, frame):
+    global run
     print("\nReceived SIGTERM. Exiting gracefully.")
+    run = False
     exit(0)
 
 

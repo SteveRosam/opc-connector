@@ -79,29 +79,41 @@ async def main():
         # Node objects have methods to read and write node attributes as well as browse or populate address space
         _logger.info("Children of root are: %r", await client.nodes.root.get_children())
 
-        # Now getting a variable node using its browse path
-        myvar = await client.nodes.root.get_child("/Objects/2:MyObject/2:MyVariable")
-        obj = await client.nodes.root.get_child("Objects/2:MyObject")
-        _logger.info("myvar is: %r", myvar)
-
-        # subscribing to a variable node
-        handler = SubHandler()
-        sub = await client.create_subscription(10, handler)
-        handle = await sub.subscribe_data_change(myvar)
-        await asyncio.sleep(0.1)
-
-        # we can also subscribe to events from server
-        await sub.subscribe_events()
+        # Get the Objects node
+        objects_node = client.nodes.objects
+        # Get all child nodes of the Objects node
+        objects = await objects_node.get_children()
         
-        # calling a method on server
-        res = await obj.call_method("2:multiply", 3, "klk")
-        _logger.info("method result is: %r", res)
+        # Iterate over each object node
+        for obj in objects:
+            # Get the object's browse name
+            browse_name = await obj.read_browse_name()
+            print(f"Object: {browse_name}")
+            
+
+        # # Now getting a variable node using its browse path
+        # myvar = await client.nodes.root.get_child("/Objects/2:MyObject/2:MyVariable")
+        # obj = await client.nodes.root.get_child("Objects/2:MyObject")
+        # _logger.info("myvar is: %r", myvar)
+
+        # # subscribing to a variable node
+        # handler = SubHandler()
+        # sub = await client.create_subscription(10, handler)
+        # handle = await sub.subscribe_data_change(myvar)
+        # await asyncio.sleep(0.1)
+
+        # # we can also subscribe to events from server
+        # await sub.subscribe_events()
+        
+        # # calling a method on server
+        # res = await obj.call_method("2:multiply", 3, "klk")
+        # _logger.info("method result is: %r", res)
         while run:
             await asyncio.sleep(1)
 
         # unsubscribe the handler
-        await sub.unsubscribe(handle)
-        await sub.delete()
+        # await sub.unsubscribe(handle)
+        # await sub.delete()
 
 if __name__ == "__main__":
     try:

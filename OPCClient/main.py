@@ -71,7 +71,7 @@ async def main():
     global run
 
     url = os.environ["OPC_SERVER_URL"]
-    tracked_values = []
+    tracked_values = {}
 
     async with Client(url=url) as client:
         # _logger.info("Root node is: %r", client.nodes.root)
@@ -122,8 +122,8 @@ async def main():
         # _logger.info("myvar is: %r", myvar)
 
         # subscribing to a variable node
-        subscriptions = []
-        handles = []
+        subscriptions = {}
+        handles = {}
         for val in tracked_values:
 
             handler = SubHandler()

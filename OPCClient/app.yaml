@@ -6,6 +6,11 @@ variables:
     description: ''
     defaultValue: opc_data
     required: false
+  - name: OPC_SERVER_URL
+    inputType: FreeText
+    description: ''
+    defaultValue: https://intopcserver:4840/freeopcua/server/
+    required: false
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py

@@ -91,7 +91,7 @@ async def main():
             print(f"ObjectBrowseName: {browse_name}")
 
             if browse_name.Name in ["Device0001", "3D_PRINTER_1"]:
-
+                print("fooo")
                 # Optionally, get and print the children of each object
                 children = await obj.get_children()
                 print(children.count() )

@@ -107,7 +107,7 @@ async def main():
                         print(param_string)
                         myvar = await client.nodes.root.get_child(param_string)
                         print("*********")
-                        print(myvar.get_parent())
+                        print(myvar)
                         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
                     except Exception as e:
                         print(e)

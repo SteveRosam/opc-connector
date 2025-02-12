@@ -76,6 +76,11 @@ deployments:
         description: ''
         required: false
         value: opc_data
+      - name: OPC_SERVER_URL
+        inputType: FreeText
+        description: ''
+        required: false
+        value: https://intopcserver:4840/freeopcua/server/
   - name: Downsample
     application: Downsampling
     version: latest

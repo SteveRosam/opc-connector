@@ -94,7 +94,7 @@ async def main():
             children = await obj.get_children()
             for child in children:
                 child_browse_name = await child.read_browse_name()
-                child_value = await child.read_array_dimensions()
+                print(child_browse_name)
                 # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
             
 

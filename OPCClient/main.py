@@ -8,6 +8,9 @@ import signal
 from asyncua import Client
 from quixstreams import Application
 
+# keep the app running?
+run = True
+
 _logger = logging.getLogger(__name__)
 
 # Create an Application
@@ -64,6 +67,8 @@ class SubHandler:
 
 
 async def main():
+    global run
+
     url = os.environ["OPC_SERVER_URL"]
     
     async with Client(url=url) as client:
@@ -90,7 +95,7 @@ async def main():
         # calling a method on server
         res = await obj.call_method("2:multiply", 3, "klk")
         _logger.info("method result is: %r", res)
-        while True:
+        while run:
             await asyncio.sleep(1)
 
         # unsubscribe the handler

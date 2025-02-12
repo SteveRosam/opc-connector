@@ -90,7 +90,7 @@ async def main():
             browse_name = await obj.read_browse_name()
             print(f"ObjectBrowseName: {browse_name}")
 
-            if browse_name in "Device0001, 3D_PRINTER_1":
+            if browse_name in ["Device0001", "3D_PRINTER_1"]:
 
                 # Optionally, get and print the children of each object
                 children = await obj.get_children()

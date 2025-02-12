@@ -87,14 +87,15 @@ async def main():
 
         # we can also subscribe to events from server
         await sub.subscribe_events()
-        # await sub.unsubscribe(handle)
-        # await sub.delete()
-
+        
         # calling a method on server
         res = await obj.call_method("2:multiply", 3, "klk")
         _logger.info("method result is: %r", res)
         while True:
             await asyncio.sleep(1)
+
+        await sub.unsubscribe(handle)
+        await sub.delete()
 
 
 if __name__ == "__main__":

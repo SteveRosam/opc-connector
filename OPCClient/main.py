@@ -97,12 +97,16 @@ async def main():
                 print("++++++++++")
                 print(f"CHILDBrowseName: {child_browse_name}")
 
-                # param_string = f"/Objects/2:Server/2:ServerArray"
-                # print("---------")
-                # print(param_string)
-                # myvar = await client.nodes.root.get_child(param_string)
-                # print(myvar)
-                # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
+                try
+                    
+                    param_string = f"/Objects/2:Server/2:ServerArray"
+                    print("---------")
+                    print(param_string)
+                    # myvar = await client.nodes.root.get_child(param_string)
+                    # print(myvar)
+                    # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
+                except Exception as e:
+                    print(e)
             
 
         # # Now getting a variable node using its browse path

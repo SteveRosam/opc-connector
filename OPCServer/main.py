@@ -67,10 +67,6 @@ async def main():
     await ctrl.set_modelling_rule(True)
     await (await ctrl.add_property(idx, "state", "Idle")).set_modelling_rule(True)
 
-    # populating our address space
-
-    # First a folder to organise our nodes
-    myfolder = await server.nodes.objects.add_folder(idx, "myEmptyFolder")
     # instanciate one instance of our device
     mydevice = await server.nodes.objects.add_object(idx, "Device0001", dev)
     mydevice_var = await mydevice.get_child(

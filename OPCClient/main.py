@@ -2,6 +2,7 @@ import asyncio
 import logging
 import os
 import json
+import signal
 
 
 from asyncua import Client
@@ -17,6 +18,14 @@ app = Application(
 # define the topic using the "output" environment variable
 topic_name = os.environ["output"]
 topic = app.topic(topic_name)
+
+def handle_sigterm(signum, frame):
+    print("\nReceived SIGTERM. Exiting gracefully.")
+    exit(0)
+
+
+# Register the signal handler
+signal.signal(signal.SIGTERM, handle_sigterm)
 
 
 class SubHandler:
@@ -90,5 +99,8 @@ async def main():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    asyncio.run(main())
+    try:
+        logging.basicConfig(level=logging.INFO)
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nProgram interrupted by user. Exiting gracefully.")

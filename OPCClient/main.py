@@ -61,19 +61,6 @@ async def main():
         # Node objects have methods to read and write node attributes as well as browse or populate address space
         _logger.info("Children of root are: %r", await client.nodes.root.get_children())
 
-        # uri = "http://examples.freeopcua.github.io"
-        # idx = await client.get_namespace_index(uri)
-        # _logger.info("index of our namespace is %s", idx)
-
-        # get a specific node knowing its node id
-        # var = client.get_node(ua.NodeId(1002, 2))
-        # var = client.get_node("ns=3;i=2002")
-        # print(var)
-        # await var.read_data_value() # get value of node as a DataValue object
-        # await var.read_value() # get value of node as a python builtin
-        # await var.write_value(ua.Variant([23], ua.VariantType.Int64)) #set node value using explicit data type
-        # await var.write_value(3.9) # set node value using implicit data type
-
         # Now getting a variable node using its browse path
         myvar = await client.nodes.root.get_child("/Objects/2:MyObject/2:MyVariable")
         obj = await client.nodes.root.get_child("Objects/2:MyObject")

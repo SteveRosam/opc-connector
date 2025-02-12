@@ -23,9 +23,13 @@ topic_name = os.environ["output"]
 topic = app.topic(topic_name)
 
 def handle_sigterm(signum, frame):
-    global run
+    global run, sub, handle
+    
     print("\nReceived SIGTERM. Exiting gracefully.")
     run = False
+    # unsubscribe the handler
+    await sub.unsubscribe(handle)
+    await sub.delete()
     exit(0)
 
 
@@ -69,7 +73,7 @@ class SubHandler:
 
 
 async def main():
-    global run
+    global run, sub, handle
 
     url = os.environ["OPC_SERVER_URL"]
     

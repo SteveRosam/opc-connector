@@ -95,7 +95,7 @@ async def main():
             for child in children:
                 child_browse_name = await child.read_browse_name()
                 print("++++++++++")
-                print(child_browse_name[0])
+                print(child_browse_name)
                 param_string = f"/Objects/2:{browse_name}/2:{child_browse_name}"
                 print("---------")
                 print(param_string)

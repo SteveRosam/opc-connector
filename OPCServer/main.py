@@ -3,6 +3,7 @@ import copy
 import logging
 from datetime import datetime
 import time
+import math
 from math import sin
 
 
@@ -10,6 +11,18 @@ from asyncua import ua, uamethod, Server
 
 
 _logger = logging.getLogger(__name__)
+
+# output min and max
+MIN_VALUE = 80
+MAX_VALUE = 100
+
+
+def scale_sin_to_range(min_value, max_value):
+    # Get the current sine value
+    sine_value = math.sin(time.time())
+    # Scale it to the range [80, 100]
+    scaled_value = ((sine_value + 1) / 2) * (max_value - min_value) + min_value
+    return scaled_value
 
 
 class SubHandler:
@@ -77,7 +90,10 @@ async def main():
     my_object = await server.nodes.objects.add_object(idx, "3D_PRINTER_1")
     my_variable = await my_object.add_variable(idx, "THERMO_PROBE_1", 99.8)
     my_variable_2 = await my_object.add_variable(idx, "THERMO_PROBE_2", 97.6)
-    await my_variable.set_writable()  # Set MyVariable to be writable by clients
+    
+    # Set to be writable by clients
+    await my_variable.set_writable()
+    await my_variable_2.set_writable()
     
     
     # mymethod = await my_object.add_method(idx, "mymethod", func, [ua.VariantType.Int64], [ua.VariantType.Boolean])
@@ -103,11 +119,17 @@ async def main():
         print("Available loggers are: ", logging.Logger.manager.loggerDict.keys())
         await mydevice_var.write_value("Running")
         await myevgen.trigger(message="This is BaseEvent")
-        await server.write_attribute_value(my_variable.nodeid, ua.DataValue(0.9))
+
+        scaled_value = scale_sin_to_range(MIN_VALUE, MAX_VALUE)
+        datavalue_1 = ua.DataValue(scaled_value)
+
+        await server.write_attribute_value(my_variable.nodeid, ua.DataValue(99.8))
+        await server.write_attribute_value(my_variable_2.nodeid, ua.DataValue(97.6))
 
         while True:
             await asyncio.sleep(0.1)
-            await server.write_attribute_value(my_variable.nodeid, ua.DataValue(sin(time.time())))
+            await server.write_attribute_value(my_variable.nodeid, ua.DataValue(datavalue_1))
+            await server.write_attribute_value(my_variable_2.nodeid, ua.DataValue(sin(time.time())))
 
 
 if __name__ == "__main__":

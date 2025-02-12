@@ -88,14 +88,15 @@ async def main():
         for obj in objects:
             # Get the object's browse name
             browse_name = await obj.read_browse_name()
-            print(f"Object: {browse_name}")
+            print(f"ObjectBrowseName: {browse_name}")
 
             # Optionally, get and print the children of each object
             children = await obj.get_children()
             for child in children:
                 child_browse_name = await child.read_browse_name()
                 print("++++++++++")
-                print(child_browse_name)
+                print(f"CHILDBrowseName: {child_browse_name}")
+
                 # param_string = f"/Objects/2:Server/2:ServerArray"
                 # print("---------")
                 # print(param_string)

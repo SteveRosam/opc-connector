@@ -84,6 +84,7 @@ async def main():
         while True:
             await asyncio.sleep(1)
 
+        # unsubscribe handler
         await sub.unsubscribe(handle)
         await sub.delete()
 

@@ -94,8 +94,8 @@ async def main():
             children = await obj.get_children()
             for child in children:
                 child_browse_name = await child.read_browse_name()
-                child_value = await child.read_value()
-                print(f"  Child Node: {child_browse_name}, Value: {child_value}")
+                # child_value = await child.read_value()
+                # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
             
 
         # # Now getting a variable node using its browse path

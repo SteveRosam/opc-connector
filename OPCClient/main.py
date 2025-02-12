@@ -97,7 +97,7 @@ async def main():
                 print("++++++++++")
                 print(f"CHILDBrowseName: {child_browse_name}")
 
-                try
+                try:
                     
                     param_string = f"/Objects/2:Server/2:ServerArray"
                     print("---------")

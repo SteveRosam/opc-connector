@@ -100,10 +100,6 @@ async def main():
         while run:
             await asyncio.sleep(1)
 
-        # unsubscribe the handler
-        await sub.unsubscribe(handle)
-        await sub.delete()
-
 
 if __name__ == "__main__":
     try:

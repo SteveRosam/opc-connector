@@ -68,7 +68,7 @@ class SubHandler:
 
 
 async def main():
-    global run, sub, handle
+    global run
 
     url = os.environ["OPC_SERVER_URL"]
     

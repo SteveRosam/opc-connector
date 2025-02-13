@@ -43,6 +43,7 @@ class SubHandler:
     with app.get_producer() as producer:
 
         def datachange_notification(self, node, val, data):
+            global producer
             # print("New data change event", node, val)
             # print("New data change event")
             # print("--------------" + str(node))

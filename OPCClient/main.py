@@ -55,7 +55,7 @@ class SubHandler:
         
         friendly_name = browse_name.Name
 
-        print(f"Data change event for node {friendly_name}: {val}")
+        # print(f"Data change event for node {friendly_name}: {val}")
         id = f'{OPC_NAMESPACE}/{friendly_name}'
 
         # Extract the DataValue from the data parameter

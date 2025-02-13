@@ -143,7 +143,7 @@ async def main():
                     child_id = child.nodeid.Identifier
                     print(child_id)
                         
-                    param_string = f"/Objects/{obj_id}:{browse_name.Name}/{child_id}:{child_browse_name.Name}"
+                    param_string = f"/Objects/2:{browse_name.Name}/2:{child_browse_name.Name}"
                 #     print("---------")
                     print(param_string)
 

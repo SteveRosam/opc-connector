@@ -53,7 +53,7 @@ class SubHandler:
         friendly_name = browse_name.Name
         id = f'{OPC_NAMESPACE}/{friendly_name}'
 
-        print(data)
+        # print(data)
 
         json_data = json.dumps(val)  # convert the row to JSON
 
@@ -74,13 +74,13 @@ class SubHandler:
             'param': friendly_name
         }
 
-        print(json.dumps(xxx))
+        # print(json.dumps(xxx))
 
         # publish the data to the topic
         producer.produce(
             topic=topic.name,
             key=id,
-            value=json_data,
+            value=xxx,
         )
 
     def event_notification(self, event):

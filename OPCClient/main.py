@@ -18,6 +18,8 @@ app = Application(
         consumer_group="data_source", 
         auto_create_topics=True)
 
+producer = app.get_producer()
+
 # define the topic using the "output" environment variable
 topic_name = os.environ["output"]
 topic = app.topic(topic_name)
@@ -39,32 +41,30 @@ class SubHandler:
     Do not do expensive, slow or network operation there. Create another
     thread if you need to do such a thing
     """
+    global producer
 
-    with app.get_producer() as producer:
+    def datachange_notification(self, node, val, data):
+        # print("New data change event", node, val)
+        # print("New data change event")
+        # print("--------------" + str(node))
+        # print(node.nodeid.NamespaceIndex)
+        print(f"Data change event for node {node.nodeid.Identifier}: {val}")
 
-        def datachange_notification(self, node, val, data):
-            global producer
-            # print("New data change event", node, val)
-            # print("New data change event")
-            # print("--------------" + str(node))
-            # print(node.nodeid.NamespaceIndex)
-            print(f"Data change event for node {node.nodeid.Identifier}: {val}")
+        id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
+        print("--------------")
+        print(node.nodeid.Identifier)
+        print(val)
+        print(data)
+        print("--------------")
 
-            id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
-            print("--------------")
-            print(node.nodeid.Identifier)
-            print(val)
-            print(data)
-            print("--------------")
+        json_data = json.dumps(val)  # convert the row to JSON
 
-            json_data = json.dumps(val)  # convert the row to JSON
-
-            # publish the data to the topic
-            producer.produce(
-                topic=topic.name,
-                key=id,
-                value=json_data,
-            )
+        # publish the data to the topic
+        producer.produce(
+            topic=topic.name,
+            key=id,
+            value=json_data,
+        )
 
     def event_notification(self, event):
         print("New event", event)

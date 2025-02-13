@@ -52,7 +52,7 @@ class SubHandler:
 
         browse_name = await node.read_browse_name()
         friendly_name = browse_name.Name
-        id = f'{OPC_NAMESPACE}__{friendly_name}'
+        id = f'{OPC_NAMESPACE}/{friendly_name}'
 
         print(friendly_name)
 

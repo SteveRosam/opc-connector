@@ -114,6 +114,7 @@ async def main():
                     child_browse_name = await child.read_browse_name()
                     print("CHILD BROWSE NAME")
                     print(child_browse_name.Name)
+                    print(child_browse_name.Identifier)
                     try:
                         child_id = child.nodeid.Identifier
                         param_string = f"/Objects/{target_namespace_index}:{browse_name.Name}/{target_namespace_index}:{child_browse_name.Name}"

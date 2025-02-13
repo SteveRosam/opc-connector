@@ -112,7 +112,7 @@ async def main():
                         
                     param_string = f"/Objects/{obj_id}:{browse_name.Name}/{child_id}:{child_browse_name.Name}"
                 #     print("---------")
-                #     print(param_string)
+                    print(param_string)
 
                 # #         if param_string not in tracked_values:
                 #     myvar = await client.nodes.root.get_child(param_string)

@@ -50,7 +50,7 @@ class SubHandler:
         print("--------------")
         print(node.nodeid.Identifier)
         print(val)
-        # print("--------------")
+        print("--------------")
         # print(data)
         # print("--------------")
 

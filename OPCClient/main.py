@@ -189,16 +189,17 @@ async def main():
         print(tracked_values)
         for val in tracked_values:
 
-            myvar = await client.nodes.root.get_child(val)
+            # Get the node for the current value
+            myvar = await client.nodes.root.get_child(val)  # Adjust this line to get the correct node
 
+            # Create a handler and subscription for each node
+            handler = SubHandler()
+            sub = await client.create_subscription(10, handler)
 
-            # handler = SubHandler()
-            # sub = await client.create_subscription(10, handler)
-        
-            # # we can also subscribe to events from server
-            # await sub.subscribe_events()
-            # subscriptions[val] = sub
-            # handles[val] = await sub.subscribe_data_change(val)
+            # Subscribe to data changes for the node
+            handle = await sub.subscribe_data_change(myvar)
+
+            # Optional: Sleep to stagger subscriptions
             await asyncio.sleep(0.1)
 
 

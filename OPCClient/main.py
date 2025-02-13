@@ -195,7 +195,7 @@ async def main():
             # we can also subscribe to events from server
             await sub.subscribe_events()
             subscriptions[val] = sub
-            handles[val] = await sub.subscribe_data_change(myvar)
+            handles[val] = await sub.subscribe_data_change(val)
             await asyncio.sleep(0.1)
 
 

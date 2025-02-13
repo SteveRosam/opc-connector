@@ -11,7 +11,7 @@ variables:
     description: ''
     defaultValue: https://intopcserver:4840/freeopcua/server/
     required: false
-  - name: opc_ua_namespace
+  - name: OPC_NAMESPACE
     inputType: FreeText
     description: ''
     defaultValue: http://quix.freeopcua.io

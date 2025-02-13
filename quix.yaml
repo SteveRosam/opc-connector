@@ -86,6 +86,11 @@ deployments:
         description: ''
         required: false
         value: http://quix.freeopcua.io
+      - name: PARAMETER_NAMES_TO_PROCESS
+        inputType: FreeText
+        description: ''
+        required: false
+        value: '["THERMO_PROBE_1", "THERMO_PROBE_2"]'
   - name: Downsample
     application: Downsampling
     version: latest

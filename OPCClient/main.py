@@ -47,7 +47,7 @@ class SubHandler:
         # print(node.nodeid.NamespaceIndex)
         print(f"Data change event for node {node.nodeid.Identifier}: {val}")
 
-        # id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
+        id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
         # print("--------------")
         # print(node.nodeid.Identifier)
         # print(val)

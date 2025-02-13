@@ -72,6 +72,7 @@ async def main():
     global run
 
     url = os.environ["OPC_SERVER_URL"]
+    namespace = os.environ["OPC_NAMESPACE"]
     tracked_values = {}
 
     async with Client(url=url) as client:

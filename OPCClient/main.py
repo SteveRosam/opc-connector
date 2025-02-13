@@ -52,6 +52,11 @@ class SubHandler:
         print(data)
 
         json_data = json.dumps(val)  # convert the row to JSON
+        xxx = {
+            'server_ts': '',
+            'rcpt_ts': '',
+            'data_type': '',
+        }
 
         # publish the data to the topic
         producer.produce(

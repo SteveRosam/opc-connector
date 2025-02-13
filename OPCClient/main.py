@@ -54,15 +54,15 @@ class SubHandler:
         print(data)
         print("--------------")
 
-        with app.get_producer() as producer:
-            json_data = json.dumps(val)  # convert the row to JSON
+        # with app.get_producer() as producer:
+        #     json_data = json.dumps(val)  # convert the row to JSON
 
-            # publish the data to the topic
-            producer.produce(
-                topic=topic.name,
-                key=id,
-                value=json_data,
-            )
+        #     # publish the data to the topic
+        #     producer.produce(
+        #         topic=topic.name,
+        #         key=id,
+        #         value=json_data,
+        #     )
 
     def event_notification(self, event):
         print("New event", event)

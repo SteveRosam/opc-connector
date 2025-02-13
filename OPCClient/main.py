@@ -12,6 +12,7 @@ from quixstreams import Application
 run = True
 
 OPC_NAMESPACE = os.environ["OPC_NAMESPACE"]
+TOPIC_NAME = os.environ["output"]
 
 _logger = logging.getLogger(__name__)
 logging.getLogger("asyncua.common.subscription").setLevel(logging.WARNING)
@@ -25,8 +26,7 @@ app = Application(
 producer = app.get_producer()
 
 # define the topic using the "output" environment variable
-topic_name = os.environ["output"]
-topic = app.topic(topic_name)
+topic = app.topic(TOPIC_NAME)
 
 def handle_sigterm(signum, frame):
     global run
@@ -36,7 +36,6 @@ def handle_sigterm(signum, frame):
 
 # Register the signal handler
 signal.signal(signal.SIGTERM, handle_sigterm)
-
 
 class SubHandler:
     """

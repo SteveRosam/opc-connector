@@ -51,11 +51,12 @@ class SubHandler:
         print(f"Data change event for node {node.nodeid.Identifier}: {val}")
 
         id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
-        print("--------------")
-        print(node.nodeid.Identifier)
-        print(val)
-        print(data)
-        print("--------------")
+
+        # print("--------------")
+        # print(node.nodeid.Identifier)
+        # print(val)
+        # print(data)
+        # print("--------------")
 
         json_data = json.dumps(val)  # convert the row to JSON
 
@@ -169,10 +170,10 @@ async def main():
                         # print(type(child_id))
                         # print(child_id in [12,13])
                         if child_id in [12,13]:
-                            print("~_~_~_~_~_~_~_~_")
+                            # print("~_~_~_~_~_~_~_~_")
                             myvar = await client.nodes.root.get_child(param_string)
                             tracked_values[param_string] = myvar
-                            print(tracked_values)
+                            # print(tracked_values)
                             # print(myvar)
                             # print("~_~_~_~_~_~_~_~_")
                     #         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
@@ -188,8 +189,8 @@ async def main():
             # subscribing to a variable node
             subscriptions = {}
             handles = {}
-            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-            print(tracked_values)
+            # print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            # print(tracked_values)
             for val in tracked_values:
 
                 # Get the node for the current value

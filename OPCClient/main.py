@@ -199,6 +199,10 @@ async def main():
             # Subscribe to data changes for the node
             handle = await sub.subscribe_data_change(myvar)
 
+            # Store the subscription and handle
+            subscriptions[val] = sub
+            handles[val] = handle
+            
             # Optional: Sleep to stagger subscriptions
             await asyncio.sleep(0.1)
 

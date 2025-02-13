@@ -107,7 +107,7 @@ async def main():
 
         namespace_array_node = client.get_node("i=2255")  # NodeId for NamespaceArray
         namespace_array = await namespace_array_node.read_value()
-        
+        print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
         # Print all namespaces
         for index, namespace in enumerate(namespace_array):
             print(f"Namespace Index: {index}, Namespace URI: {namespace}")
@@ -115,8 +115,8 @@ async def main():
         if opc_namespace in namespace_array:
             target_index = namespace_array.index(opc_namespace)
             print(f"Target Namespace URI '{opc_namespace}' is at index {target_index}")
-        # else:
-        #     print(f"Target Namespace URI '{opc_namespace}' not found")
+        else:
+            print(f"Target Namespace URI '{opc_namespace}' not found")
 
 
 

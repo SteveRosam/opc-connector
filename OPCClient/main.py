@@ -105,6 +105,7 @@ async def main():
 
                 try:
                     print(child.nodeid)
+                    print(child.nodeid.Identifier)
                         
                 #     param_string = f"/Objects/2:{browse_name.Name}/13:{child_browse_name.Name}"
                 #     print("---------")

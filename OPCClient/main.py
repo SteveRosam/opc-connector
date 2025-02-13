@@ -70,6 +70,7 @@ class SubHandler:
             'server_ts': source_timestamp,
             'rcpt_ts': time.time_ns(),
             'data_type': variant_type,
+            'value': data_value
         }
 
         print(json.dumps(xxx))

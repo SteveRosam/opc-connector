@@ -51,6 +51,7 @@ class SubHandler:
 
     async def datachange_notification(self, node, val, data):
         browse_name = await node.read_browse_name()
+        
         friendly_name = browse_name.Name
 
         print(f"Data change event for node {friendly_name}: {val}")

@@ -46,19 +46,10 @@ class SubHandler:
     global producer
 
     def datachange_notification(self, node, val, data):
-        # print("New data change event", node, val)
-        # print("New data change event")
-        # print("--------------" + str(node))
-        # print(node.nodeid.NamespaceIndex)
         print(f"Data change event for node {node.nodeid.Identifier}: {val}")
-
         id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
 
-        # print("--------------")
-        # print(node.nodeid.Identifier)
-        # print(val)
-        # print(data)
-        # print("--------------")
+        print(node.read_browse_name())
 
         json_data = json.dumps(val)  # convert the row to JSON
 

@@ -108,16 +108,18 @@ async def main():
         namespace_array_node = client.get_node("i=2255")  # NodeId for NamespaceArray
         namespace_array = await namespace_array_node.read_value()
         target_namespace_index = 0
-        print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+        # print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
         # Print all namespaces
         for index, namespace in enumerate(namespace_array):
-            print(f"Namespace Index: {index}, Namespace URI: {namespace}")
+            # print(f"Namespace Index: {index}, Namespace URI: {namespace}")
+            pass
         
         if opc_namespace in namespace_array:
             target_namespace_index = namespace_array.index(opc_namespace)
-            print(f"Target Namespace URI '{opc_namespace}' is at index {target_namespace_index}")
+            # print(f"Target Namespace URI '{opc_namespace}' is at index {target_namespace_index}")
         else:
-            print(f"Target Namespace URI '{opc_namespace}' not found")
+            # print(f"Target Namespace URI '{opc_namespace}' not found")
+            pass
 
 
 
@@ -136,40 +138,40 @@ async def main():
         for obj in objects:
             # Get the object's browse name
             browse_name = await obj.read_browse_name()
-            print(f"ObjectBrowseName: {browse_name}")
+            # print(f"ObjectBrowseName: {browse_name}")
             obj_id = obj.nodeid.Identifier
-            print(obj_id)
+            # print(obj_id)
 
             # if browse_name.Name in ["Device0001", "3D_PRINTER_1"]:
                 # print("fooo")
                 # Optionally, get and print the children of each object
             children = await obj.get_children()
-            print("===========")
-            print(children)
+            # print("===========")
+            # print(children)
             for child in children:
                 child_browse_name = await child.read_browse_name()
-                print("++++++++++")
-                print(f"CHILDBrowseName: {child_browse_name}")
+                # print("++++++++++")
+                # print(f"CHILDBrowseName: {child_browse_name}")
 
                 try:
-                    print(child.nodeid)
+                    # print(child.nodeid)
                     child_id = child.nodeid.Identifier
-                    print(child_id)
+                    # print(child_id)
                         
                     param_string = f"/Objects/{target_namespace_index}:{browse_name.Name}/{target_namespace_index}:{child_browse_name.Name}"
                 #     print("---------")
-                    print(param_string)
+                    # print(param_string)
 
                 # #         if param_string not in tracked_values:
-                    print(type(child_id))
-                    print(child_id in [12,13])
+                    # print(type(child_id))
+                    # print(child_id in [12,13])
                     if child_id in [12,13]:
-                        print("~_~_~_~_~_~_~_~_")
+                        # print("~_~_~_~_~_~_~_~_")
                         myvar = await client.nodes.root.get_child(param_string)
                         tracked_values[param_string] = myvar
                         print(tracked_values)
-                        print(myvar)
-                        print("~_~_~_~_~_~_~_~_")
+                        # print(myvar)
+                        # print("~_~_~_~_~_~_~_~_")
                 #         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
                 except Exception as e:
                     print(e)

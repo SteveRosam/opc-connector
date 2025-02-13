@@ -100,7 +100,7 @@ async def main():
                 for child in children:
                     child_browse_name = await child.read_browse_name()
                     # print("++++++++++")
-                    # print(f"CHILDBrowseName: {child_browse_name}")
+                    print(f"CHILDBrowseName: {child_browse_name}")
 
                     try:
                         

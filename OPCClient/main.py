@@ -45,7 +45,7 @@ class SubHandler:
     """
     global producer
 
-    def datachange_notification(self, node, val, data):
+    async def datachange_notification(self, node, val, data):
         print(f"Data change event for node {node.nodeid.Identifier}: {val}")
         id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
 

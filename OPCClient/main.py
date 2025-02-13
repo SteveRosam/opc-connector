@@ -91,7 +91,8 @@ async def main():
             # Get the object's browse name
             browse_name = await obj.read_browse_name()
             print(f"ObjectBrowseName: {browse_name}")
-            print(obj.nodeid.Identifier)
+            obj_id = obj.nodeid.Identifier
+            print(obj_id)
 
             # if browse_name.Name in ["Device0001", "3D_PRINTER_1"]:
                 # print("fooo")
@@ -106,9 +107,10 @@ async def main():
 
                 try:
                     print(child.nodeid)
-                    print(child.nodeid.Identifier)
+                    child_id = child.nodeid.Identifier
+                    print(child_id)
                         
-                    param_string = f"/Objects/2:{browse_name.Name}/13:{child_browse_name.Name}"
+                    param_string = f"/Objects/{obj_id}:{browse_name.Name}/{child_id}:{child_browse_name.Name}"
                 #     print("---------")
                 #     print(param_string)
 

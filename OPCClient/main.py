@@ -12,6 +12,7 @@ from quixstreams import Application
 run = True
 
 _logger = logging.getLogger(__name__)
+_logger.basicConfig(level=logging.INFO)
 
 # Create an Application
 app = Application(

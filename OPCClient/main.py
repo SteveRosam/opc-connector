@@ -76,35 +76,41 @@ async def main():
 
     async with Client(url=url) as client:
 
-        # Access the Objects node
-        objects_node = client.nodes.objects
+        # # Access the Objects node
+        # objects_node = client.nodes.objects
         
-        # Get all child nodes of the Objects node
-        objects = await objects_node.get_children()
+        # # Get all child nodes of the Objects node
+        # objects = await objects_node.get_children()
         
-        # Iterate over each object node
-        for obj in objects:
-            # Get the object's browse name and NodeId
-            browse_name = await obj.read_browse_name()
-            node_id = obj.nodeid
+        # # Iterate over each object node
+        # for obj in objects:
+        #     # Get the object's browse name and NodeId
+        #     browse_name = await obj.read_browse_name()
+        #     node_id = obj.nodeid
             
-            # Print the object's browse name and NodeId
-            print(f"Object: {browse_name.Name}, NodeId: {node_id}")
+        #     # Print the object's browse name and NodeId
+        #     print(f"Object: {browse_name.Name}, NodeId: {node_id}")
             
-            # Optionally, print the children of each object
-            children = await obj.get_children()
-            for child in children:
-                child_browse_name = await child.read_browse_name()
-                child_node_id = child.nodeid
-                print(f"  Child Node: {child_browse_name.Name}, NodeId: {child_node_id}")
+        #     # Optionally, print the children of each object
+        #     children = await obj.get_children()
+        #     for child in children:
+        #         child_browse_name = await child.read_browse_name()
+        #         child_node_id = child.nodeid
+        #         print(f"  Child Node: {child_browse_name.Name}, NodeId: {child_node_id}")
 
-        print("END END END END END END END END END END END END END ")
-
-
+        # print("END END END END END END END END END END END END END ")
 
 
 
 
+
+        namespace_array_node = client.get_node("i=2255")  # NodeId for NamespaceArray
+        namespace_array = await namespace_array_node.read_value()
+        
+        # Print all namespaces
+        for index, namespace in enumerate(namespace_array):
+            print(f"Namespace Index: {index}, Namespace URI: {namespace}")
+        
 
 
 

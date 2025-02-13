@@ -102,21 +102,22 @@ async def main():
                 child_browse_name = await child.read_browse_name()
                 print("++++++++++")
                 print(f"CHILDBrowseName: {child_browse_name}")
+                print(child.nodeid)
 
                 try:
                         
-                    param_string = f"/Objects/2:{browse_name.Name}/13:{child_browse_name.Name}"
-                    print("---------")
-                    print(param_string)
+                #     param_string = f"/Objects/2:{browse_name.Name}/13:{child_browse_name.Name}"
+                #     print("---------")
+                #     print(param_string)
 
-                #         if param_string not in tracked_values:
-                    myvar = await client.nodes.root.get_child(param_string)
-                #             tracked_values[param_string] = myvar
-                    print("~_~_~_~_~_~_~_~_")
-                    print(myvar)
-                    print(myvar.nodeid)
-                    print(myvar.nodeid.Identifier)
-                    print("~_~_~_~_~_~_~_~_")
+                # #         if param_string not in tracked_values:
+                #     myvar = await client.nodes.root.get_child(param_string)
+                # #             tracked_values[param_string] = myvar
+                #     print("~_~_~_~_~_~_~_~_")
+                #     print(myvar)
+                #     print(myvar.nodeid)
+                #     print(myvar.nodeid.Identifier)
+                #     print("~_~_~_~_~_~_~_~_")
                 #         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
                 except Exception as e:
                     print(e)

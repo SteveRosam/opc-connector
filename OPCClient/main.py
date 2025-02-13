@@ -13,6 +13,8 @@ run = True
 
 OPC_NAMESPACE = os.environ["OPC_NAMESPACE"]
 TOPIC_NAME = os.environ["output"]
+PARAMETER_NAMES_TO_PROCESS = []
+
 
 _logger = logging.getLogger(__name__)
 logging.getLogger("asyncua.common.subscription").setLevel(logging.WARNING)
@@ -85,7 +87,7 @@ class SubHandler:
 
 
 async def main():
-    global run, OPC_NAMESPACE
+    global run, OPC_NAMESPACE, PARAMETER_NAMES_TO_PROCESS
 
     opc_url = os.environ["OPC_SERVER_URL"]
     tracked_values = {}
@@ -113,12 +115,10 @@ async def main():
                 for child in children:
                     child_browse_name = await child.read_browse_name()
                     print("CHILD BROWSE NAME")
-                    print(child_browse_name.Name)
-                    print(child_browse_name)
+                    child_name = child_browse_name.Name
                     try:
-                        child_id = child.nodeid.Identifier
                         param_string = f"/Objects/{target_namespace_index}:{browse_name.Name}/{target_namespace_index}:{child_browse_name.Name}"
-                        if child_id in [12,13]:
+                        if child_name in PARAMETER_NAMES_TO_PROCESS:
                             myvar = await client.nodes.root.get_child(param_string)
                             tracked_values[param_string] = myvar
                     except Exception as e:

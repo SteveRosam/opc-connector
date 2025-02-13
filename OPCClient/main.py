@@ -65,14 +65,16 @@ class SubHandler:
         xxx = {
             'server_ts': source_timestamp,
             'rcpt_ts': datetime.now(),
-            'data_type': '',
+            'data_type': variant_type,
         }
+
+
 
         # publish the data to the topic
         producer.produce(
             topic=topic.name,
             key=id,
-            value=json_data,
+            value=xxx,
         )
 
     def event_notification(self, event):

@@ -53,10 +53,6 @@ class SubHandler:
         friendly_name = browse_name.Name
         id = f'{OPC_NAMESPACE}/{friendly_name}'
 
-        # print(data)
-
-        json_data = json.dumps(val)  # convert the row to JSON
-
         # Extract the DataValue from the data parameter
         data_value = data.monitored_item.Value
 
@@ -66,7 +62,7 @@ class SubHandler:
         # Extract the variant type
         variant_type = data_value.Value.VariantType
 
-        xxx = {
+        json_data = {
             'srv_ts': source_timestamp,
             'rx_ts': time.time_ns(),
             'type': variant_type,
@@ -75,12 +71,13 @@ class SubHandler:
         }
 
         # print(json.dumps(xxx))
+        json_bytes = json_data.encode('utf-8')
 
         # publish the data to the topic
         producer.produce(
             topic=topic.name,
             key=id,
-            value=xxx,
+            value=json_bytes,
         )
 
     def event_notification(self, event):

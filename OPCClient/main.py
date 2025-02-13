@@ -96,6 +96,7 @@ async def main():
                 # print("fooo")
                 # Optionally, get and print the children of each object
                 children = await obj.get_children()
+                print("===========")
                 print(children)
                 # for child in children:
                 #     child_browse_name = await child.read_browse_name()

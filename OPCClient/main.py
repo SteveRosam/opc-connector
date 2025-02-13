@@ -196,8 +196,8 @@ async def main():
             await sub.subscribe_events()
             subscriptions[val] = sub
             handles[val] = await sub.subscribe_data_change(myvar)
-        
-        await asyncio.sleep(0.1)
+            await asyncio.sleep(0.1)
+
 
         
         # # calling a method on server

@@ -67,10 +67,11 @@ class SubHandler:
         variant_type = data_value.Value.VariantType
 
         xxx = {
-            'server_ts': source_timestamp,
-            'rcpt_ts': time.time_ns(),
-            'data_type': variant_type,
-            'value': val
+            'srv_ts': source_timestamp,
+            'rx_ts': time.time_ns(),
+            'type': variant_type,
+            'val': val,
+            'param': friendly_name
         }
 
         print(json.dumps(xxx))

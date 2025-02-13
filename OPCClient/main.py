@@ -57,10 +57,14 @@ class SubHandler:
 
         json_data = json.dumps(val)  # convert the row to JSON
 
+        # Extract the DataValue from the data parameter
+        data_value = data.monitored_item.Value
+
         # Extract the source timestamp
-        source_timestamp = data.SourceTimestamp
+        source_timestamp = data_value.SourceTimestamp
+
         # Extract the variant type
-        variant_type = data.Value.VariantType
+        variant_type = data_value.Value.VariantType
 
         xxx = {
             'server_ts': source_timestamp,

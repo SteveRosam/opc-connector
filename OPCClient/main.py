@@ -115,11 +115,11 @@ async def main():
                     print("CHILD BROWSE NAME")
                     print(child_browse_name)
                     try:
-                        # child_id = child.nodeid.Identifier
+                        child_id = child.nodeid.Identifier
                         param_string = f"/Objects/{target_namespace_index}:{browse_name.Name}/{target_namespace_index}:{child_browse_name.Name}"
-                        # if child_id in [12,13]:
-                        myvar = await client.nodes.root.get_child(param_string)
-                        tracked_values[param_string] = myvar
+                        if child_id in [12,13]:
+                            myvar = await client.nodes.root.get_child(param_string)
+                            tracked_values[param_string] = myvar
                     except Exception as e:
                         print(e)
 

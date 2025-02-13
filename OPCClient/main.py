@@ -50,7 +50,7 @@ class SubHandler:
     global producer
 
     async def datachange_notification(self, node, val, data):
-        browse_name = await node.read_browse_name()
+        browse_name = await node.get_parent().read_browse_name()
         
         friendly_name = browse_name.Name
 

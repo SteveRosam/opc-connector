@@ -102,9 +102,9 @@ async def main():
                 child_browse_name = await child.read_browse_name()
                 print("++++++++++")
                 print(f"CHILDBrowseName: {child_browse_name}")
-                print(child.nodeid)
 
-                # try:
+                try:
+                    print(child.nodeid)
                         
                 #     param_string = f"/Objects/2:{browse_name.Name}/13:{child_browse_name.Name}"
                 #     print("---------")

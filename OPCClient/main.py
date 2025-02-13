@@ -10,7 +10,7 @@ from quixstreams import Application
 
 # keep the app running?
 run = True
- 
+
 OPC_NAMESPACE = os.environ["OPC_NAMESPACE"]
 TOPIC_NAME = os.environ["output"]
 

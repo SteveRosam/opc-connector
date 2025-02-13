@@ -95,19 +95,6 @@ async def main():
     await probe1.set_writable()
     await probe2.set_writable()
     
-    
-    # mymethod = await my_object.add_method(idx, "mymethod", func, [ua.VariantType.Int64], [ua.VariantType.Boolean])
-    # multiply_node = await my_object.add_method(
-    #     idx,
-    #     "multiply",
-    #     multiply,
-    #     [ua.VariantType.Int64, ua.VariantType.Int64],
-    #     [ua.VariantType.Int64],
-    # )
-
-    # import some nodes from xml
-    # await server.import_xml("custom_nodes.xml")
-
     # creating a default event object
     # The event object automatically will have members for all events properties
     # you probably want to create a custom event type, see other examples

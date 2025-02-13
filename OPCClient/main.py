@@ -11,6 +11,8 @@ from quixstreams import Application
 # keep the app running?
 run = True
 
+OPC_NAMESPACE = os.environ["OPC_NAMESPACE"]
+
 _logger = logging.getLogger(__name__)
 logging.getLogger("asyncua.common.subscription").setLevel(logging.WARNING)
 logging.basicConfig(level=logging.INFO)
@@ -73,7 +75,7 @@ class SubHandler:
 
 
 async def main():
-    global run
+    global run, OPC_NAMESPACE
 
     opc_url = os.environ["OPC_SERVER_URL"]
     opc_namespace = os.environ["OPC_NAMESPACE"]
@@ -113,26 +115,9 @@ async def main():
             namespace_array_node = client.get_node("i=2255")  # NodeId for NamespaceArray
             namespace_array = await namespace_array_node.read_value()
             target_namespace_index = 0
-            # print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-            # Print all namespaces
-            for index, namespace in enumerate(namespace_array):
-                # print(f"Namespace Index: {index}, Namespace URI: {namespace}")
-                pass
             
-            if opc_namespace in namespace_array:
-                target_namespace_index = namespace_array.index(opc_namespace)
-                # print(f"Target Namespace URI '{opc_namespace}' is at index {target_namespace_index}")
-            else:
-                # print(f"Target Namespace URI '{opc_namespace}' not found")
-                pass
-
-
-
-            # _logger.info("Root node is: %r", client.nodes.root)
-            # _logger.info("Objects node is: %r", client.nodes.objects)
-
-            # Node objects have methods to read and write node attributes as well as browse or populate address space
-            # _logger.info("Children of root are: %r", await client.nodes.root.get_children())
+            if OPC_NAMESPACE in namespace_array:
+                target_namespace_index = namespace_array.index(OPC_NAMESPACE)
 
             # Get the Objects node
             objects_node = client.nodes.objects

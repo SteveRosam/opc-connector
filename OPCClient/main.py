@@ -89,7 +89,6 @@ async def main():
     global run, OPC_NAMESPACE
 
     opc_url = os.environ["OPC_SERVER_URL"]
-    opc_namespace = os.environ["OPC_NAMESPACE"]
     tracked_values = {}
 
     try:

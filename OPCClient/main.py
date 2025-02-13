@@ -14,7 +14,7 @@ run = True
 OPC_NAMESPACE = os.environ["OPC_NAMESPACE"]
 TOPIC_NAME = os.environ["output"]
 
-params_to_process = os.getenv("PARAMETER_NAMES_TO_PROCESS", [])
+params_to_process = os.getenv("PARAMETER_NAMES_TO_PROCESS", '')
 PARAMETER_NAMES_TO_PROCESS = json.loads(params_to_process)
 print(PARAMETER_NAMES_TO_PROCESS)
 

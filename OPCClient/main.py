@@ -49,7 +49,10 @@ class SubHandler:
         print(f"Data change event for node {node.nodeid.Identifier}: {val}")
         id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
 
-        print(data)
+        browse_name = await node.read_browse_name()
+        friendly_name = browse_name.Name
+
+        print(friendly_name)
 
         json_data = json.dumps(val)  # convert the row to JSON
         xxx = {

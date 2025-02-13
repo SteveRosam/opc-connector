@@ -71,7 +71,6 @@ class SubHandler:
         }
 
         json_str = json.dumps(json_obj)
-        # print(json.dumps(xxx))
         json_bytes = json_str.encode('utf-8')
 
         # publish the data to the topic

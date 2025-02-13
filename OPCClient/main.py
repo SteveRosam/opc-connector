@@ -105,7 +105,7 @@ async def main():
 
                 try:
                         
-                    param_string = f"/Objects/2:{browse_name.Name}/2:{child_browse_name.Name}"
+                    param_string = f"/Objects/2:{browse_name.Name}/13:{child_browse_name.Name}"
                     print("---------")
                     print(param_string)
 

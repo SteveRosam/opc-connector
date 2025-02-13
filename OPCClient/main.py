@@ -68,7 +68,7 @@ class SubHandler:
 
         xxx = {
             'server_ts': source_timestamp,
-            'rcpt_ts': time.time(),
+            'rcpt_ts': time.time_ns(),
             'data_type': variant_type,
         }
 

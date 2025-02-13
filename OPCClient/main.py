@@ -136,6 +136,7 @@ async def main():
         # subscribing to a variable node
         subscriptions = {}
         handles = {}
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         for val in tracked_values:
 
             handler = SubHandler()

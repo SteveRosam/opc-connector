@@ -90,14 +90,14 @@ async def main():
         for obj in objects:
             # Get the object's browse name
             browse_name = await obj.read_browse_name()
-            # print(f"ObjectBrowseName: {browse_name}")
+            print(f"ObjectBrowseName: {browse_name}")
 
-            if browse_name.Name in ["Device0001", "3D_PRINTER_1"]:
+            # if browse_name.Name in ["Device0001", "3D_PRINTER_1"]:
                 # print("fooo")
                 # Optionally, get and print the children of each object
-                children = await obj.get_children()
-                print("===========")
-                print(children)
+            children = await obj.get_children()
+            print("===========")
+            print(children)
                 # for child in children:
                 #     child_browse_name = await child.read_browse_name()
                 #     # print("++++++++++")

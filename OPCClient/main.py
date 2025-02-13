@@ -112,6 +112,7 @@ async def main():
                 #         if param_string not in tracked_values:
                     myvar = await client.nodes.root.get_child(param_string)
                 #             tracked_values[param_string] = myvar
+                    print("~_~_~_~_~_~_~_~_")
                     print(myvar)
                 #         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
                 except Exception as e:

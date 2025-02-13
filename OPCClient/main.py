@@ -43,8 +43,9 @@ class SubHandler:
     def datachange_notification(self, node, val, data):
         # print("New data change event", node, val)
         print("New data change event")
-        print("--------------")
+        print("--------------" + node)
         print(node.nodeid.NamespaceIndex)
+        
         print(node.nodeid.Identifier)
         id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
         print("--------------")

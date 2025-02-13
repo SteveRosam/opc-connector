@@ -13,6 +13,7 @@ run = True
 
 _logger = logging.getLogger(__name__)
 logging.getLogger("asyncua.common.subscription").setLevel(logging.WARNING)
+logging.basicConfig(level=logging.DEBUG)
 
 # Create an Application
 app = Application(

@@ -71,11 +71,11 @@ class SubHandler:
 async def main():
     global run
 
-    url = os.environ["OPC_SERVER_URL"]
-    namespace = os.environ["OPC_NAMESPACE"]
+    opc_url = os.environ["OPC_SERVER_URL"]
+    opc_namespace = os.environ["OPC_NAMESPACE"]
     tracked_values = {}
 
-    async with Client(url=url) as client:
+    async with Client(url=opc_url) as client:
 
         # # Access the Objects node
         # objects_node = client.nodes.objects
@@ -112,6 +112,11 @@ async def main():
         for index, namespace in enumerate(namespace_array):
             print(f"Namespace Index: {index}, Namespace URI: {namespace}")
         
+        if opc_namespace in namespace_array:
+            target_index = namespace_array.index(target_namespace_uri)
+            print(f"Target Namespace URI '{target_namespace_uri}' is at index {target_index}")
+        else:
+            print(f"Target Namespace URI '{target_namespace_uri}' not found")
 
 
 

@@ -115,7 +115,7 @@ async def main():
                     print(param_string)
 
                 # #         if param_string not in tracked_values:
-                    print(child_id)
+                    print(type(child_id))
                     if child_id in ['12','13']:
                         myvar = await client.nodes.root.get_child(param_string)
                         tracked_values[param_string] = myvar

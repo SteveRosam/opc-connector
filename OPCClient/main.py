@@ -114,6 +114,8 @@ async def main():
                 #             tracked_values[param_string] = myvar
                     print("~_~_~_~_~_~_~_~_")
                     print(myvar)
+                    print(myvar.nodeid)
+                    print(myvar.nodeid.Identifier)
                     print("~_~_~_~_~_~_~_~_")
                 #         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
                 except Exception as e:

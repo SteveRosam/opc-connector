@@ -78,7 +78,7 @@ class SubHandler:
         producer.produce(
             topic=topic.name,
             key=id,
-            value=xxx,
+            value=json_data,
         )
 
     def event_notification(self, event):

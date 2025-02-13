@@ -113,19 +113,16 @@ async def main():
         await asyncio.sleep(0.1)
 
         while True:
-            
-            # Update probe2 with a different scaled sine value or another logic
-            scaled_value_2 = scale_sin_to_range(MIN_VALUE*2, MAX_VALUE*2)  # or another logic
-            await server.write_attribute_value(probe2.nodeid, ua.DataValue(scaled_value_2))
-            # await asyncio.sleep(1)
-            
             # Update probe1 with a scaled sine value
             scaled_value_1 = scale_sin_to_range(MIN_VALUE, MAX_VALUE)
             await server.write_attribute_value(probe1.nodeid, ua.DataValue(scaled_value_1))
+
+            # Update probe2 with a different scaled sine value or another logic
+            scaled_value_2 = scale_sin_to_range(MIN_VALUE*2, MAX_VALUE*2)  # or another logic
+            await server.write_attribute_value(probe2.nodeid, ua.DataValue(scaled_value_2))
+
             await asyncio.sleep(0.2)
             
-
-
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)

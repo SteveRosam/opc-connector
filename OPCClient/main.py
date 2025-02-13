@@ -62,7 +62,7 @@ class SubHandler:
         # Extract the variant type
         variant_type = data_value.Value.VariantType
 
-        json_data = {
+        json_obj = {
             'srv_ts': source_timestamp,
             'rx_ts': time.time_ns(),
             'type': variant_type,

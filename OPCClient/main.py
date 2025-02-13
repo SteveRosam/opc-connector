@@ -75,6 +75,39 @@ async def main():
     tracked_values = {}
 
     async with Client(url=url) as client:
+
+        # Access the Objects node
+        objects_node = client.nodes.objects
+        
+        # Get all child nodes of the Objects node
+        objects = await objects_node.get_children()
+        
+        # Iterate over each object node
+        for obj in objects:
+            # Get the object's browse name and NodeId
+            browse_name = await obj.read_browse_name()
+            node_id = obj.nodeid
+            
+            # Print the object's browse name and NodeId
+            print(f"Object: {browse_name.Name}, NodeId: {node_id}")
+            
+            # Optionally, print the children of each object
+            children = await obj.get_children()
+            for child in children:
+                child_browse_name = await child.read_browse_name()
+                child_node_id = child.nodeid
+                print(f"  Child Node: {child_browse_name.Name}, NodeId: {child_node_id}")
+
+        print("END END END END END END END END END END END END END ")
+
+
+
+
+
+
+
+
+
         # _logger.info("Root node is: %r", client.nodes.root)
         # _logger.info("Objects node is: %r", client.nodes.objects)
 

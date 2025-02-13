@@ -53,7 +53,7 @@ class SubHandler:
         friendly_name = browse_name.Name
         id = f'{OPC_NAMESPACE}/{friendly_name}'
 
-        print(friendly_name)
+        print(data)
 
         json_data = json.dumps(val)  # convert the row to JSON
         xxx = {

@@ -58,9 +58,9 @@ class SubHandler:
         json_data = json.dumps(val)  # convert the row to JSON
 
         # Extract the source timestamp
-        source_timestamp = val.SourceTimestamp
+        source_timestamp = data.SourceTimestamp
         # Extract the variant type
-        variant_type = val.Value.VariantType
+        variant_type = data.Value.VariantType
 
         xxx = {
             'server_ts': source_timestamp,

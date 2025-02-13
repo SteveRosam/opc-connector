@@ -142,6 +142,7 @@ async def main():
                 await asyncio.sleep(0.1)
 
 
+            # keep working while 'run' flag is True
             while run:
                 await asyncio.sleep(1)
 

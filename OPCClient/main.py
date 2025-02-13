@@ -112,11 +112,11 @@ async def main():
         for index, namespace in enumerate(namespace_array):
             print(f"Namespace Index: {index}, Namespace URI: {namespace}")
         
-        # if opc_namespace in namespace_array:
-        #     target_index = namespace_array.index(target_namespace_uri)
-        #     print(f"Target Namespace URI '{target_namespace_uri}' is at index {target_index}")
+        if opc_namespace in namespace_array:
+            target_index = namespace_array.index(opc_namespace)
+            print(f"Target Namespace URI '{opc_namespace}' is at index {target_index}")
         # else:
-        #     print(f"Target Namespace URI '{target_namespace_uri}' not found")
+        #     print(f"Target Namespace URI '{opc_namespace}' not found")
 
 
 

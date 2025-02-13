@@ -80,7 +80,7 @@ async def main():
 
     try:
         async with Client(url=opc_url) as client:
-
+            
             # # Access the Objects node
             # objects_node = client.nodes.objects
             

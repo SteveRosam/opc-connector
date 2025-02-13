@@ -81,6 +81,11 @@ deployments:
         description: ''
         required: false
         value: https://intopcserver:4840/freeopcua/server/
+      - name: OPC_NAMESPACE
+        inputType: FreeText
+        description: ''
+        required: false
+        value: http://quix.freeopcua.io
   - name: Downsample
     application: Downsampling
     version: latest

@@ -3,7 +3,7 @@ import logging
 import os
 import json
 import signal
-
+from datetime import datetime
 
 from asyncua import Client
 from quixstreams import Application
@@ -56,9 +56,15 @@ class SubHandler:
         print(data)
 
         json_data = json.dumps(val)  # convert the row to JSON
+
+        # Extract the source timestamp
+        source_timestamp = val.SourceTimestamp
+        # Extract the variant type
+        variant_type = val.Value.VariantType
+
         xxx = {
-            'server_ts': '',
-            'rcpt_ts': '',
+            'server_ts': source_timestamp,
+            'rcpt_ts': datetime.now(),
             'data_type': '',
         }
 

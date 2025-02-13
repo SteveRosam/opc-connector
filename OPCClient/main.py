@@ -166,7 +166,7 @@ async def main():
                     # print(type(child_id))
                     # print(child_id in [12,13])
                     if child_id in [12,13]:
-                        # print("~_~_~_~_~_~_~_~_")
+                        print("~_~_~_~_~_~_~_~_")
                         myvar = await client.nodes.root.get_child(param_string)
                         tracked_values[param_string] = myvar
                         print(tracked_values)

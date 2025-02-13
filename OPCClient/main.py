@@ -72,7 +72,7 @@ class SubHandler:
             'data_type': variant_type,
         }
 
-
+        print(xxx)
 
         # publish the data to the topic
         producer.produce(

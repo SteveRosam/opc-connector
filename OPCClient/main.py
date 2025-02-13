@@ -16,6 +16,7 @@ TOPIC_NAME = os.environ["output"]
 
 params_to_process = os.getenv("PARAMETER_NAMES_TO_PROCESS", [])
 PARAMETER_NAMES_TO_PROCESS = json.loads(params_to_process)
+print(PARAMETER_NAMES_TO_PROCESS)
 
 _logger = logging.getLogger(__name__)
 logging.getLogger("asyncua.common.subscription").setLevel(logging.WARNING)

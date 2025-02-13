@@ -69,7 +69,7 @@ async def main():
     )
 
     # setup our own namespace
-    uri = "http://examples.freeopcua.github.io"
+    uri = "http://quix.freeopcua.io"
     idx = await server.register_namespace(uri)
 
     # create a new node type we can instantiate in our address space

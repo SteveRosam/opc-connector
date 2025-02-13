@@ -113,7 +113,8 @@ async def main():
                     myvar = await client.nodes.root.get_child(param_string)
                 #             tracked_values[param_string] = myvar
                     print("~_~_~_~_~_~_~_~_")
-                    print(myvar.Identifier)
+                    print(myvar)
+                    print("~_~_~_~_~_~_~_~_")
                 #         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
                 except Exception as e:
                     print(e)

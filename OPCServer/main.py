@@ -135,7 +135,7 @@ async def main():
             # Update probe1 with a scaled sine value
             scaled_value_1 = scale_sin_to_range(MIN_VALUE, MAX_VALUE)
             await server.write_attribute_value(probe1.nodeid, ua.DataValue(scaled_value_1))
-            await asyncio.sleep(1)
+            await asyncio.sleep(0.2)
             
 
 

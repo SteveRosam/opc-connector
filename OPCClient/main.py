@@ -118,13 +118,11 @@ async def main():
                     print(type(child_id))
                     print(child_id in [12,13])
                     if child_id in [12,13]:
+                        print("~_~_~_~_~_~_~_~_")
                         myvar = await client.nodes.root.get_child(param_string)
                         tracked_values[param_string] = myvar
                         print(tracked_values)
-                        print("~_~_~_~_~_~_~_~_")
                         print(myvar)
-                #     print(myvar.nodeid)
-                #     print(myvar.nodeid.Identifier)
                         print("~_~_~_~_~_~_~_~_")
                 #         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
                 except Exception as e:

@@ -110,7 +110,6 @@ async def main():
             for obj in objects:
                 # Get the object's browse name
                 browse_name = await obj.read_browse_name()
-                obj_id = obj.nodeid.Identifier
                 children = await obj.get_children()
                 for child in children:
                     child_browse_name = await child.read_browse_name()

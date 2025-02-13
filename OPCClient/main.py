@@ -3,7 +3,7 @@ import logging
 import os
 import json
 import signal
-from datetime import datetime
+import time
 
 from asyncua import Client
 from quixstreams import Application
@@ -68,7 +68,7 @@ class SubHandler:
 
         xxx = {
             'server_ts': source_timestamp,
-            'rcpt_ts': datetime.now(),
+            'rcpt_ts': time.time(),
             'data_type': variant_type,
         }
 

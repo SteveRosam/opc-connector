@@ -42,17 +42,17 @@ class SubHandler:
 
     def datachange_notification(self, node, val, data):
         # print("New data change event", node, val)
-        print("New data change event")
-        print("--------------" + str(node))
-        print(node.nodeid.NamespaceIndex)
+        # print("New data change event")
+        # print("--------------" + str(node))
+        # print(node.nodeid.NamespaceIndex)
         
-        print(node.nodeid.Identifier)
         id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
         print("--------------")
+        print(node.nodeid.Identifier)
         print(val)
-        print("--------------")
-        print(data)
-        print("--------------")
+        # print("--------------")
+        # print(data)
+        # print("--------------")
 
         with app.get_producer() as producer:
             json_data = json.dumps(val)  # convert the row to JSON

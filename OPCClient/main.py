@@ -96,25 +96,25 @@ async def main():
                 # print("fooo")
                 # Optionally, get and print the children of each object
                 children = await obj.get_children()
-                
-                for child in children:
-                    child_browse_name = await child.read_browse_name()
-                    # print("++++++++++")
-                    print(f"CHILDBrowseName: {child_browse_name}")
+                print(children)
+                # for child in children:
+                #     child_browse_name = await child.read_browse_name()
+                #     # print("++++++++++")
+                #     print(f"CHILDBrowseName: {child_browse_name}")
 
-                    try:
+                #     try:
                         
-                        param_string = f"/Objects/2:{browse_name.Name}/2:{child_browse_name.Name}"
-                        # print("---------")
-                        # print(param_string)
+                #         param_string = f"/Objects/2:{browse_name.Name}/2:{child_browse_name.Name}"
+                #         # print("---------")
+                #         # print(param_string)
 
-                        if param_string not in tracked_values:
-                            myvar = await client.nodes.root.get_child(param_string)
-                            tracked_values[param_string] = myvar
-                        print(myvar)
-                        # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
-                    except Exception as e:
-                        print(e)
+                #         if param_string not in tracked_values:
+                #             myvar = await client.nodes.root.get_child(param_string)
+                #             tracked_values[param_string] = myvar
+                #         print(myvar)
+                #         # print(f"  Child Node: {child_browse_name}, Value: {child_value}")
+                #     except Exception as e:
+                #         print(e)
             
 
         # # Now getting a variable node using its browse path

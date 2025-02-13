@@ -220,8 +220,8 @@ async def main():
             # unsubscribe the handler
             # await sub.unsubscribe(handle)
             # await sub.delete()
-        except ConnectionError as ce:
-            print(ce)
+    except ConnectionError as ce:
+        print(ce)
 
 if __name__ == "__main__":
     try:

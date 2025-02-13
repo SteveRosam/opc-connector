@@ -40,29 +40,30 @@ class SubHandler:
     thread if you need to do such a thing
     """
 
-    def datachange_notification(self, node, val, data):
-        # print("New data change event", node, val)
-        # print("New data change event")
-        # print("--------------" + str(node))
-        # print(node.nodeid.NamespaceIndex)
-        print(f"Data change event for node {node.nodeid.Identifier}: {val}")
+    with app.get_producer() as producer:
 
-        id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
-        print("--------------")
-        print(node.nodeid.Identifier)
-        print(val)
-        print(data)
-        print("--------------")
+        def datachange_notification(self, node, val, data):
+            # print("New data change event", node, val)
+            # print("New data change event")
+            # print("--------------" + str(node))
+            # print(node.nodeid.NamespaceIndex)
+            print(f"Data change event for node {node.nodeid.Identifier}: {val}")
 
-        # with app.get_producer() as producer:
-        #     json_data = json.dumps(val)  # convert the row to JSON
+            id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
+            print("--------------")
+            print(node.nodeid.Identifier)
+            print(val)
+            print(data)
+            print("--------------")
 
-        #     # publish the data to the topic
-        #     producer.produce(
-        #         topic=topic.name,
-        #         key=id,
-        #         value=json_data,
-        #     )
+            json_data = json.dumps(val)  # convert the row to JSON
+
+            # publish the data to the topic
+            producer.produce(
+                topic=topic.name,
+                key=id,
+                value=json_data,
+            )
 
     def event_notification(self, event):
         print("New event", event)

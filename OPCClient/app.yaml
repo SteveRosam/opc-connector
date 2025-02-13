@@ -11,6 +11,11 @@ variables:
     description: ''
     defaultValue: https://intopcserver:4840/freeopcua/server/
     required: false
+  - name: opc_ua_namespace
+    inputType: FreeText
+    description: ''
+    defaultValue: http://quix.freeopcua.io
+    required: false
 dockerfile: dockerfile
 runEntryPoint: main.py
 defaultFile: main.py

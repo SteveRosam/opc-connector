@@ -48,12 +48,11 @@ class SubHandler:
         print(f"Data change event for node {node.nodeid.Identifier}: {val}")
 
         id = f'{node.nodeid.NamespaceIndex}__{node.nodeid.Identifier}'
-        # print("--------------")
-        # print(node.nodeid.Identifier)
-        # print(val)
-        # print("--------------")
-        # print(data)
-        # print("--------------")
+        print("--------------")
+        print(node.nodeid.Identifier)
+        print(val)
+        print(data)
+        print("--------------")
 
         with app.get_producer() as producer:
             json_data = json.dumps(val)  # convert the row to JSON

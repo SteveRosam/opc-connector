@@ -19,6 +19,8 @@ PARAMETER_NAMES_TO_PROCESS = json.loads(params_to_process)
 
 _logger = logging.getLogger(__name__)
 logging.getLogger("asyncua.common.subscription").setLevel(logging.WARNING)
+logging.getLogger("asyncua.client.ua_client.UaClient").setLevel(logging.WARNING)
+
 logging.basicConfig(level=logging.INFO)
 
 # Create an Application

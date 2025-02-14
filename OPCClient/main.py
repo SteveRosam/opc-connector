@@ -15,6 +15,7 @@ OPC_NAMESPACE = os.environ["OPC_NAMESPACE"]
 TOPIC_NAME = os.environ["output"]
 
 params_to_process = os.getenv("PARAMETER_NAMES_TO_PROCESS", '')
+params_to_process = params_to_process.replace("'", "\"")
 PARAMETER_NAMES_TO_PROCESS = json.loads(params_to_process)
 
 _logger = logging.getLogger(__name__)

@@ -68,12 +68,15 @@ class SubHandler:
         print(data)
         # Extract the source timestamp
         server_timestamp = data_value.ServerTimestamp
-
+        # Convert to Unix timestamp in seconds
+        server_timestamp_seconds = server_timestamp.timestamp()
+        # Convert to Unix timestamp in nanoseconds
+        server_timestamp_nanoseconds = int(server_timestamp_seconds * 1_000_000_000)
         # Extract the variant type
         variant_type = data_value.Value.VariantType
 
         json_obj = {
-            'srv_ts': server_timestamp,
+            'srv_ts': server_timestamp_nanoseconds,
             'rx_ts': time.time_ns(),
             'type': variant_type,
             'val': val,

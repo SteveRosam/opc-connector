@@ -63,6 +63,7 @@ class SubHandler:
         print(f"Data change event for node {machine_name}: {val}")
         id = f'{OPC_NAMESPACE}/{machine_name}'
 
+        print(data)
         # Extract the DataValue from the data parameter
         data_value = data.monitored_item.Value
         # Extract the source timestamp

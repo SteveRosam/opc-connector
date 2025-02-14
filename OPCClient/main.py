@@ -78,7 +78,7 @@ class SubHandler:
         json_obj = {
             'srv_ts': server_timestamp_nanoseconds,
             'connector_ts': time.time_ns(),
-            'type': variant_type,
+            'type': variant_type.name,
             'val': val,
             'param': parameter_name,
             'machine': machine_name

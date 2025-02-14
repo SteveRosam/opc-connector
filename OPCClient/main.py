@@ -65,7 +65,7 @@ class SubHandler:
 
         # Extract the DataValue from the data parameter
         data_value = data.monitored_item.Value
-
+        print(data)
         # Extract the source timestamp
         server_timestamp = data_value.ServerTimestamp
 

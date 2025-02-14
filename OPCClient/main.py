@@ -67,13 +67,13 @@ class SubHandler:
         data_value = data.monitored_item.Value
 
         # Extract the source timestamp
-        source_timestamp = data_value.SourceTimestamp
+        server_timestamp = data_value.ServerTimestamp
 
         # Extract the variant type
         variant_type = data_value.Value.VariantType
 
         json_obj = {
-            'srv_ts': source_timestamp,
+            'srv_ts': server_timestamp,
             'rx_ts': time.time_ns(),
             'type': variant_type,
             'val': val,

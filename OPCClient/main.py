@@ -52,13 +52,13 @@ class SubHandler:
     global producer
 
     async def datachange_notification(self, node, val, data):
-        parent = await node.get_parent()
-        browse_name = await parent.read_browse_name()
-        
-        friendly_name = browse_name.Name
 
-        print(f"Data change event for node {friendly_name}: {val}")
-        id = f'{OPC_NAMESPACE}/{friendly_name}'
+        parent = await node.get_parent()
+        machine_browse_name = await parent.read_browse_name()
+        machine_name = machine_browse_name.Name
+
+        print(f"Data change event for node {machine_name}: {val}")
+        id = f'{OPC_NAMESPACE}/{machine_name}'
 
         # Extract the DataValue from the data parameter
         data_value = data.monitored_item.Value

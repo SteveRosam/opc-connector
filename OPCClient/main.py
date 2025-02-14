@@ -143,6 +143,13 @@ async def main():
                 sub = await client.create_subscription(10, handler)
                 # Subscribe to data changes for the node
                 handle = await sub.subscribe_data_change(myvar)
+                                
+                 # Subscribe to data changes for the node with TimestampsToReturn.Both
+                handle = await sub.subscribe_data_change(
+                    myvar,
+                    Client.TimestampsToReturn.Both  # Request both source and server timestamps
+                )
+                
                 # Store the subscription and handle
                 subscriptions[val] = sub
                 handles[val] = handle

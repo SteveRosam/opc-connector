@@ -77,7 +77,8 @@ class SubHandler:
             'rx_ts': time.time_ns(),
             'type': variant_type,
             'val': val,
-            'param': parameter_name
+            'param': parameter_name,
+            'machine': machine_name
         }
 
         json_str = json.dumps(json_obj)

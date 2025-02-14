@@ -5,7 +5,7 @@ import json
 import signal
 import time
 
-from asyncua import Client
+from asyncua import Client, ua
 from quixstreams import Application
 
 # keep the app running?
@@ -147,7 +147,7 @@ async def main():
                  # Subscribe to data changes for the node with TimestampsToReturn.Both
                 handle = await sub.subscribe_data_change(
                     myvar,
-                    Client.TimestampsToReturn.Both  # Request both source and server timestamps
+                    ua.TimestampsToReturn.Both  # Request both source and server timestamps
                 )
                 
                 # Store the subscription and handle

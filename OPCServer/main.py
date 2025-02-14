@@ -108,18 +108,18 @@ async def main():
         await myevgen.trigger(message="This is BaseEvent")
 
         # Send an initial value / this could be the current value or a default.
-        await server.write_attribute_value(probe1.nodeid, ua.DataValue(99.8))
-        await server.write_attribute_value(probe2.nodeid, ua.DataValue(0.9))
+        await server.write_attribute_value(probe1.nodeid, ua.DataValue(99.8, ServerTimestamp=datetime.utcnow()))
+        await server.write_attribute_value(probe2.nodeid, ua.DataValue(0.9, ServerTimestamp=datetime.utcnow()))
         await asyncio.sleep(0.1)
 
         while True:
             # Update probe1 with a scaled sine value
             scaled_value_1 = scale_sin_to_range(MIN_VALUE, MAX_VALUE)
-            await server.write_attribute_value(probe1.nodeid, ua.DataValue(scaled_value_1))
+            await server.write_attribute_value(probe1.nodeid, ua.DataValue(scaled_value_1, ServerTimestamp=datetime.utcnow()))
 
             # Update probe2 with a different scaled sine value or another logic
             scaled_value_2 = scale_sin_to_range(MIN_VALUE*2, MAX_VALUE*2)  # or another logic
-            await server.write_attribute_value(probe2.nodeid, ua.DataValue(scaled_value_2))
+            await server.write_attribute_value(probe2.nodeid, ua.DataValue(scaled_value_2, ServerTimestamp=datetime.utcnow()))
 
             await asyncio.sleep(0.2)
             

@@ -19,7 +19,7 @@ variables:
   - name: PARAMETER_NAMES_TO_PROCESS
     inputType: FreeText
     description: ''
-    defaultValue: "['THERMO_PROBE_1', 'THERMO_PROBE_2']"
+    defaultValue: '[\"THERMO_PROBE_1\", \"THERMO_PROBE_2\"]'
     required: false
 dockerfile: dockerfile
 runEntryPoint: main.py

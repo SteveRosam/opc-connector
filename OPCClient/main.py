@@ -57,6 +57,9 @@ class SubHandler:
         machine_browse_name = await parent.read_browse_name()
         machine_name = machine_browse_name.Name
 
+        parameter_browse_name = await node.read_browse_name()
+        parameter_name = parameter_browse_name.Name
+
         print(f"Data change event for node {machine_name}: {val}")
         id = f'{OPC_NAMESPACE}/{machine_name}'
 
@@ -74,7 +77,7 @@ class SubHandler:
             'rx_ts': time.time_ns(),
             'type': variant_type,
             'val': val,
-            'param': friendly_name
+            'param': parameter_name
         }
 
         json_str = json.dumps(json_obj)
